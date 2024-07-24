@@ -3,6 +3,7 @@ import { Metadata } from "next"
 import { getCustomer, listCustomerOrders } from "@lib/data"
 import Overview from "@modules/account/components/overview"
 import { notFound } from "next/navigation"
+import Login from "../@login/page"
 
 export const metadata: Metadata = {
   title: "Account",
@@ -12,6 +13,8 @@ export const metadata: Metadata = {
 export default async function OverviewTemplate() {
   const customer = await getCustomer().catch(() => null)
   const orders = (await listCustomerOrders().catch(() => null)) || null
+
+  console.log(customer)
 
   if (!customer) {
     notFound()

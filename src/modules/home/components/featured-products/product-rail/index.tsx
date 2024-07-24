@@ -3,6 +3,7 @@ import { Text } from "@medusajs/ui"
 
 import InteractiveLink from "@modules/common/components/interactive-link"
 import ProductPreview from "@modules/products/components/product-preview"
+import Link from "next/link"
 import { ProductCollectionWithPreviews } from "types/global"
 
 export default function ProductRail({
@@ -22,11 +23,8 @@ export default function ProductRail({
     <div className="content-container py-12 small:py-24">
       <div className="flex justify-between mb-8">
         <Text className="txt-xlarge">{collection.title}</Text>
-        <InteractiveLink href={`/collections/${collection.handle}`}>
-          View all
-        </InteractiveLink>
       </div>
-      <ul className="grid grid-cols-2 small:grid-cols-3 gap-x-6 gap-y-24 small:gap-y-36">
+      <ul className="grid grid-cols-2 small:grid-cols-5 gap-x-6 gap-y-24 small:gap-y-36">
         {products &&
           products.map((product) => (
             <li key={product.id}>
@@ -38,6 +36,14 @@ export default function ProductRail({
             </li>
           ))}
       </ul>
+      <div className="flex-1 py-12 flex justify-center items-center">
+        <Link
+          href={`/collections/${collection.handle}`}
+          className="border border-gray-400 hover:border-gray-600 px-6 py-2"
+        >
+          View all
+        </Link>
+      </div>
     </div>
   )
 }

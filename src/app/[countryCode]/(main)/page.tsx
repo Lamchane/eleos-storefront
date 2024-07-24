@@ -46,7 +46,10 @@ const getCollectionsWithProducts = cache(
           return
         }
 
-        collection.products = response.products as unknown as Product[]
+        collection.products = response.products.slice(
+          0,
+          5
+        ) as unknown as Product[]
       })
     )
 

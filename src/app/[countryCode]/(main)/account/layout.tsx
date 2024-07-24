@@ -10,6 +10,8 @@ export default async function AccountPageLayout({
 }) {
   const customer = await getCustomer().catch(() => null)
 
+  console.log(customer)
+
   return (
     <AccountLayout customer={customer}>
       {customer ? dashboard : login}
