@@ -10,6 +10,10 @@ const nextConfig = withStoreConfig({
   images: {
     remotePatterns: [
       {
+        protocol: "https",
+        hostname: "www.snitch.co.in",
+      },
+      {
         protocol: "http",
         hostname: "localhost",
       },
@@ -24,6 +28,10 @@ const nextConfig = withStoreConfig({
       {
         protocol: "https",
         hostname: "medusa-server-testing.s3.us-east-1.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "eleos-medusa-uploads.s3.ap-south-1.amazonaws.com",
       },
     ],
   },

@@ -21,6 +21,7 @@ const WishlistOverview = ({
         {wishlist &&
           wishlist.map((product) => (
             <ProductPreview
+              key={product.variant.product_id}
               productPreview={
                 {
                   ...product,
