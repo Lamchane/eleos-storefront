@@ -3,15 +3,6 @@ import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import { Product, ProductCollection } from "@medusajs/product"
 import { Variant } from "./medusa"
 
-export type WishlistProduct = {
-  title: string
-  description: string
-  variant: Variant
-  thumbnail: string
-  unit_price: number
-  variant_id: string
-}
-
 export type FeaturedProduct = {
   id: string
   title: string

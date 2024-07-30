@@ -1,4 +1,5 @@
 import Medusa from "@medusajs/medusa-js"
+import axios from "axios"
 
 // Defaults to standard port for Medusa server
 let MEDUSA_BACKEND_URL = "http://localhost:9000"

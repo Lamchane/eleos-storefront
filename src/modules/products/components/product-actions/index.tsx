@@ -2,7 +2,7 @@
 
 import { Region } from "@medusajs/medusa"
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
-import { Button } from "@medusajs/ui"
+import { Button, Text } from "@medusajs/ui"
 import { isEqual } from "lodash"
 import { useParams } from "next/navigation"
 import { useEffect, useMemo, useRef, useState } from "react"
@@ -14,6 +14,7 @@ import OptionSelect from "@modules/products/components/option-select"
 
 import MobileActions from "../mobile-actions"
 import ProductPrice from "../product-price"
+import { BsHeart } from "react-icons/bs"
 
 type ProductActionsProps = {
   product: PricedProduct
@@ -137,7 +138,7 @@ export default function ProductActions({
 
   return (
     <>
-      <div className="flex flex-col gap-y-2" ref={actionsRef}>
+      <div className="flex flex-col gap-y-6" ref={actionsRef}>
         <div>
           {product.variants.length > 1 && (
             <div className="flex flex-col gap-y-4">
@@ -160,13 +161,16 @@ export default function ProductActions({
           )}
         </div>
 
-        <ProductPrice product={product} variant={variant} region={region} />
+        <div>
+          <ProductPrice product={product} variant={variant} region={region} />
+          <Text>(incl. of all taxes)</Text>
+        </div>
 
         <Button
           onClick={handleAddToCart}
           disabled={!inStock || !variant || !!disabled || isAdding}
           variant="primary"
-          className="w-full h-10"
+          className="w-full h-12 uppercase"
           isLoading={isAdding}
           data-testid="add-product-button"
         >
@@ -176,6 +180,15 @@ export default function ProductActions({
             ? "Out of stock"
             : "Add to cart"}
         </Button>
+
+        <Button
+          variant="transparent"
+          className="w-full h-12 border border-gray-400 text-red-400"
+        >
+          <BsHeart />
+          <span>Add To Wishlist</span>
+        </Button>
+
         <MobileActions
           product={product}
           variant={variant}

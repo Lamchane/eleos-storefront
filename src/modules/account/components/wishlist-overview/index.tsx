@@ -1,18 +1,16 @@
-import { Product } from "@medusajs/medusa"
+import { LineItem, Product } from "@medusajs/medusa"
 import { Button } from "@medusajs/ui"
 
 import { Region } from "@medusajs/medusa"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import Thumbnail from "@modules/products/components/thumbnail"
 import ProductPreview from "@modules/products/components/product-preview"
-import { WishlistProduct } from "types/global"
 
 const WishlistOverview = ({
   wishlist,
   region,
 }: {
-  wishlist: WishlistProduct[]
+  wishlist: LineItem[]
   region: Region
 }) => {
   if (wishlist?.length) {

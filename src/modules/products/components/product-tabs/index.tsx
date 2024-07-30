@@ -7,6 +7,7 @@ import FastDelivery from "@modules/common/icons/fast-delivery"
 import Refresh from "@modules/common/icons/refresh"
 
 import Accordion from "./accordion"
+import { Text } from "@medusajs/ui"
 
 type ProductTabsProps = {
   product: PricedProduct
@@ -14,6 +15,10 @@ type ProductTabsProps = {
 
 const ProductTabs = ({ product }: ProductTabsProps) => {
   const tabs = [
+    {
+      label: "Product Description",
+      component: <ProductDescriptionTab product={product} />,
+    },
     {
       label: "Product Information",
       component: <ProductInfoTab product={product} />,
@@ -38,6 +43,19 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
           </Accordion.Item>
         ))}
       </Accordion>
+    </div>
+  )
+}
+
+const ProductDescriptionTab = ({ product }: ProductTabsProps) => {
+  return (
+    <div className="text-small-regular py-8">
+      <Text
+        className="text-medium text-ui-fg-subtle"
+        data-testid="product-description"
+      >
+        {product.description}
+      </Text>
     </div>
   )
 }

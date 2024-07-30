@@ -1,41 +1,38 @@
-import { Region } from "@medusajs/medusa"
-import { Text } from "@medusajs/ui"
+import { Region, ProductCollection } from "@medusajs/medusa"
 
-import InteractiveLink from "@modules/common/components/interactive-link"
 import ProductPreview from "@modules/products/components/product-preview"
 import Link from "next/link"
-import { ProductCollectionWithPreviews } from "types/global"
+import { ProductPreviewType } from "types/global"
 
 export default function ProductRail({
   collection,
+  products,
   region,
 }: {
-  collection: ProductCollectionWithPreviews
+  collection: ProductCollection
+  products: ProductPreviewType[]
   region: Region
 }) {
-  const { products } = collection
-
   if (!products) {
     return null
   }
 
   return (
-    <div className="content-container py-12 small:py-24">
-      <div className="flex justify-between mb-8">
-        <Text className="txt-xlarge">{collection.title}</Text>
+    <div className="content-container py-6">
+      <div className="max-w-full overflow-x-auto">
+        <ul className="w-max small:w-full grid grid-cols-5 gap-x-4 small:gap-x-6 gap-y-24 small:gap-y-36">
+          {products &&
+            products.map((product) => (
+              <li key={product.id}>
+                <ProductPreview
+                  productPreview={product}
+                  region={region}
+                  isFeatured
+                />
+              </li>
+            ))}
+        </ul>
       </div>
-      <ul className="grid grid-cols-2 small:grid-cols-5 gap-x-6 gap-y-24 small:gap-y-36">
-        {products &&
-          products.map((product) => (
-            <li key={product.id}>
-              <ProductPreview
-                productPreview={product}
-                region={region}
-                isFeatured
-              />
-            </li>
-          ))}
-      </ul>
       <div className="flex-1 py-12 flex justify-center items-center">
         <Link
           href={`/collections/${collection.handle}`}

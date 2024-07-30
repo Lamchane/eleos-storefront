@@ -1,4 +1,5 @@
 import {
+  LineItem,
   Product,
   ProductCategory,
   ProductCollection,
@@ -17,11 +18,7 @@ import { cache } from "react"
 import sortProducts from "@lib/util/sort-products"
 import transformProductPreview from "@lib/util/transform-product-preview"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
-import {
-  ProductCategoryWithChildren,
-  ProductPreviewType,
-  WishlistProduct,
-} from "types/global"
+import { ProductCategoryWithChildren, ProductPreviewType } from "types/global"
 
 import { medusaClient } from "@lib/config"
 import medusaError from "@lib/util/medusa-error"
@@ -348,7 +345,7 @@ export const listCustomerWishlist = cache(async function () {
   const headers = getMedusaHeaders(["customer"])
 
   return medusaClient.customers.retrieve(headers).then(({ customer }) => {
-    const wishlist = (customer.metadata.wishlist as WishlistProduct[]) || []
+    const wishlist = (customer.metadata.wishlist as LineItem[]) || []
     return wishlist
   })
 })
@@ -595,6 +592,26 @@ export const retrieveCollection = cache(async function (id: string) {
     .catch((err) => {
       throw err
     })
+})
+
+export const getCollectionsByDisplaySection = cache(async function (
+  displaySection: string,
+  offset: number = 0,
+  limit: number = 0
+): Promise<{ collections: ProductCollection[]; count: number }> {
+  const data: { collections: ProductCollection[]; count: number } =
+    await medusaClient.client.request(
+      "GET",
+      `/store/collections/filter-metadata?displaySection=${displaySection}`,
+      {
+        offset,
+        limit,
+      }
+    )
+  return {
+    collections: data.collections,
+    count: data.count,
+  }
 })
 
 export const getCollectionsList = cache(async function (

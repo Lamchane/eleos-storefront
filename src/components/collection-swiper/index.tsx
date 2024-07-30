@@ -10,9 +10,28 @@ import "swiper/css/navigation"
 
 import Image from "next/image"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { ProductCollection } from "@medusajs/medusa"
+import { getCollectionsByDisplaySection } from "@lib/data"
 
 type Props = {
-  collections: { handle: string; title: string; thumbnail: string }[]
+  collections: ProductCollection[]
+}
+
+export function CollectionBanner({
+  collection,
+}: {
+  collection: ProductCollection
+}) {
+  return (
+    <LocalizedClientLink href={`/collections/${collection.handle}`}>
+      <Image
+        src={(collection.metadata?.bannerImage as string) ?? ""}
+        alt={`${collection.title}-banner`}
+        width={1920}
+        height={1080}
+      />
+    </LocalizedClientLink>
+  )
 }
 
 function CollectionSwiper({ collections }: Props) {
@@ -30,14 +49,7 @@ function CollectionSwiper({ collections }: Props) {
     >
       {collections.map((collection) => (
         <SwiperSlide key={collection.title}>
-          <LocalizedClientLink href={`/collections/${collection.handle}`}>
-            <Image
-              src={collection.thumbnail}
-              alt={`${collection.title}-banner`}
-              width={1920}
-              height={1080}
-            />
-          </LocalizedClientLink>
+          <CollectionBanner collection={collection} />
         </SwiperSlide>
       ))}
     </Swiper>

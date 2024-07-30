@@ -37,7 +37,7 @@ export default async function ProductPreview({
       href={`/products/${productPreview.handle}`}
       className="group"
     >
-      <div data-testid="product-wrapper">
+      <div data-testid="product-wrapper" className="w-40 small:w-full">
         <Thumbnail
           thumbnail={productPreview.thumbnail}
           size="full"
