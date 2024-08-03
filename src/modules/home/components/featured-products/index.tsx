@@ -1,15 +1,51 @@
-import { Region } from "@medusajs/medusa"
+import { Product, Region } from "@medusajs/medusa"
 import { ProductCollection } from "@medusajs/medusa"
 
-import { ProductPreviewType, ProductCollectionWithPreviews } from "types/global"
-import {
-  getProductsByCollectionHandle,
-  getProductsList,
-  getRegion,
-} from "@lib/data"
+import { getProductsList, getRegion } from "@lib/data"
 
-import ProductRail from "@modules/home/components/featured-products/product-rail"
-import { Badge, Button } from "@medusajs/ui"
+import { ProductCollectionWithPreviews } from "types/global"
+import { cache } from "react"
+import CollectionWithProdcutRail from "./collection-tabs"
+
+const getCollectionsWithProducts = cache(
+  async (
+    collections: ProductCollection[],
+    countryCode: string
+  ): Promise<ProductCollectionWithPreviews[] | null> => {
+    if (!collections) {
+      return null
+    }
+
+    const collectionIds = collections.map((collection) => collection.id)
+
+    await Promise.all(
+      collectionIds.map((id) =>
+        getProductsList({
+          queryParams: { collection_id: [id], limit: 5 },
+          countryCode,
+        })
+      )
+    ).then((responses) =>
+      responses.forEach(({ response, queryParams }) => {
+        let collection
+
+        if (collections) {
+          collection = collections.find(
+            (collection) => collection.id === queryParams?.collection_id?.[0]
+          )
+        }
+
+        if (!collection) {
+          return
+        }
+
+        collection.products = response.products as unknown as Product[]
+      })
+    )
+
+    return collections as unknown as ProductCollectionWithPreviews[]
+  }
+)
 
 export default async function FeaturedProducts({
   collections,
@@ -19,41 +55,18 @@ export default async function FeaturedProducts({
   countryCode: string
 }) {
   const region = await getRegion(countryCode)
-  const defaultCollection = collections[0]
-  const {
-    response: { products },
-  } = await getProductsByCollectionHandle({
-    handle: defaultCollection.handle,
-    limit: 10,
-    countryCode: countryCode || "in",
-  })
+
+  const collectionWithProducts = await getCollectionsWithProducts(
+    collections,
+    countryCode
+  )
 
   return (
     <section className="py-12">
-      <ul className="flex justify-center items-center gap-4">
-        {collections.map((collection) => (
-          <li key={collection.id}>
-            <Button
-              // onClick={() => {
-              //   // You may need to implement some client-side logic to handle state changes
-              //   // since server components don't manage state.
-              //   console.log(collection.id)
-              // }}
-              variant="transparent"
-              className="border border-gray-400 rounded-3xl "
-            >
-              {collection.title}
-            </Button>
-          </li>
-        ))}
-      </ul>
-      {defaultCollection && (
-        <ProductRail
-          collection={defaultCollection}
-          products={products ?? []}
-          region={region as unknown as Region}
-        />
-      )}
+      <CollectionWithProdcutRail
+        collectionWithProducts={collectionWithProducts ?? []}
+        region={region as Region}
+      />
     </section>
   )
 }

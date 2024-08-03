@@ -646,42 +646,42 @@ export const getCollectionByHandle = cache(async function (
   return collection
 })
 
-export const getProductsByCollectionHandle = cache(
-  async function getProductsByCollectionHandle({
-    pageParam = 0,
-    limit = 100,
-    handle,
+// export const getProductsByCollectionHandle = cache(
+export async function getProductsByCollectionHandle({
+  pageParam = 0,
+  limit = 100,
+  handle,
+  countryCode,
+}: {
+  pageParam?: number
+  handle: string
+  limit?: number
+  countryCode: string
+  currencyCode?: string
+}): Promise<{
+  response: { products: ProductPreviewType[]; count: number }
+  nextPage: number | null
+}> {
+  const { id } = await getCollectionByHandle(handle).then(
+    (collection) => collection
+  )
+
+  const { response, nextPage } = await getProductsList({
+    pageParam,
+    queryParams: { collection_id: [id], limit },
     countryCode,
-  }: {
-    pageParam?: number
-    handle: string
-    limit?: number
-    countryCode: string
-    currencyCode?: string
-  }): Promise<{
-    response: { products: ProductPreviewType[]; count: number }
-    nextPage: number | null
-  }> {
-    const { id } = await getCollectionByHandle(handle).then(
-      (collection) => collection
-    )
-
-    const { response, nextPage } = await getProductsList({
-      pageParam,
-      queryParams: { collection_id: [id], limit },
-      countryCode,
+  })
+    .then((res) => res)
+    .catch((err) => {
+      throw err
     })
-      .then((res) => res)
-      .catch((err) => {
-        throw err
-      })
 
-    return {
-      response,
-      nextPage,
-    }
+  return {
+    response,
+    nextPage,
   }
-)
+}
+// )
 
 // Category actions
 export const listCategories = cache(async function () {
