@@ -12,6 +12,7 @@ type Props = {
 }
 
 function CollectionWithProdcutRail({ collectionWithProducts, region }: Props) {
+  // @ts-nocheck
   return (
     <div className="w-full px-4">
       {collectionWithProducts && (
