@@ -18,14 +18,14 @@ function CollectionWithProdcutRail({ collectionWithProducts, region }: Props) {
         <Tabs defaultValue={collectionWithProducts[0].id}>
           <Tabs.List className="flex justify-center">
             {collectionWithProducts.map((collection) => (
-              <Tabs.Trigger value={collection.id}>
+              <Tabs.Trigger key={collection.id} value={collection.id}>
                 {collection.title}
               </Tabs.Trigger>
             ))}
           </Tabs.List>
           <div className="mt-2">
             {collectionWithProducts.map((collection) => (
-              <Tabs.Content value={collection.id}>
+              <Tabs.Content key={collection.id} value={collection.id}>
                 <ProductRail
                   handle={collection.handle ?? ""}
                   products={collection.products ?? []}
