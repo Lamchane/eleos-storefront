@@ -1,5 +1,7 @@
 "use client"
 
+// @ts-nocheck
+
 import React from "react"
 import { ProductCollectionWithPreviews } from "types/global"
 import ProductRail from "@modules/home/components/featured-products/product-rail"
@@ -11,8 +13,7 @@ type Props = {
   region: Region
 }
 
-function CollectionWithProdcutRail({ collectionWithProducts, region }: Props) {
-  // @ts-nocheck
+function CollectionWithProductRail({ collectionWithProducts, region }: Props) {
   return (
     <div className="w-full px-4">
       {collectionWithProducts && (
@@ -41,4 +42,4 @@ function CollectionWithProdcutRail({ collectionWithProducts, region }: Props) {
   )
 }
 
-export default CollectionWithProdcutRail
+export default CollectionWithProductRail

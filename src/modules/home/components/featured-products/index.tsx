@@ -5,7 +5,7 @@ import { getProductsList, getRegion } from "@lib/data"
 
 import { ProductCollectionWithPreviews } from "types/global"
 import { cache } from "react"
-import CollectionWithProdcutRail from "./collection-tabs"
+import CollectionWithProductRail from "./collection-tabs"
 
 const getCollectionsWithProducts = cache(
   async (
@@ -63,7 +63,7 @@ export default async function FeaturedProducts({
 
   return (
     <section className="py-12">
-      <CollectionWithProdcutRail
+      <CollectionWithProductRail
         collectionWithProducts={collectionWithProducts ?? []}
         region={region as Region}
       />
