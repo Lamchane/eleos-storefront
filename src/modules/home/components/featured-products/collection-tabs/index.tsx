@@ -1,12 +1,12 @@
 "use client"
 
-// @ts-nocheck
-
 import React from "react"
 import { ProductCollectionWithPreviews } from "types/global"
-import ProductRail from "@modules/home/components/featured-products/product-rail"
+
 import { Tabs } from "@medusajs/ui"
 import { Region } from "@medusajs/medusa"
+
+import ProductRail from "@modules/home/components/featured-products/product-rail"
 
 type Props = {
   collectionWithProducts: ProductCollectionWithPreviews[]

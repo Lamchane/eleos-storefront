@@ -1,10 +1,9 @@
-import { Product, Region } from "@medusajs/medusa"
-import { ProductCollection } from "@medusajs/medusa"
+import { cache } from "react"
+import { Product, Region, ProductCollection } from "@medusajs/medusa"
 
 import { getProductsList, getRegion } from "@lib/data"
 
 import { ProductCollectionWithPreviews } from "types/global"
-import { cache } from "react"
 import CollectionWithProductRail from "./collection-tabs"
 
 const getCollectionsWithProducts = cache(

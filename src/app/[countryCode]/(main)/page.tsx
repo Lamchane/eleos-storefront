@@ -1,10 +1,12 @@
 import { Metadata } from "next"
 
-import { getCollectionsByDisplaySection, getRegion } from "@lib/data"
+import { getCollectionsByDisplaySection } from "@lib/data"
+
 import FeaturedProducts from "@modules/home/components/featured-products"
+
 import CollectionSwiper, {
   CollectionBanner,
-} from "components/collection-swiper"
+} from "@modules/home/components/collection-swiper"
 
 export const metadata: Metadata = {
   title: "Enhance Your Style With Premium Quality Accessories - ELEOS",

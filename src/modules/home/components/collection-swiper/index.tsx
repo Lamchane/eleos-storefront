@@ -11,7 +11,6 @@ import "swiper/css/navigation"
 import Image from "next/image"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { ProductCollection } from "@medusajs/medusa"
-import { getCollectionsByDisplaySection } from "@lib/data"
 
 type Props = {
   collections: ProductCollection[]

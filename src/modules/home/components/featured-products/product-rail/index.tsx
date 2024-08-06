@@ -1,8 +1,11 @@
-import { Region, ProductCollection } from "@medusajs/medusa"
+"use client"
+
+import Link from "next/link"
+
+import { Region } from "@medusajs/medusa"
+import { ProductPreviewType } from "types/global"
 
 import ProductPreview from "@modules/products/components/product-preview"
-import Link from "next/link"
-import { ProductPreviewType } from "types/global"
 
 export default function ProductRail({
   handle,
