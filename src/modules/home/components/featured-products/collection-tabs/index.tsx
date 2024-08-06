@@ -31,7 +31,6 @@ function CollectionWithProductRail({ collectionWithProducts, region }: Props) {
       {collectionWithProducts.length > 0 && (
         // @ts-expect-error
         <Tabs defaultValue={collectionWithProducts[0].id}>
-          {/* @ts-expect-error */}
           <Tabs.List className="flex justify-center">
             {collectionWithProducts.map((collection) => (
               <Tabs.Trigger key={collection.id} value={collection.id}>
@@ -41,7 +40,6 @@ function CollectionWithProductRail({ collectionWithProducts, region }: Props) {
           </Tabs.List>
           <div className="mt-2">
             {collectionWithProducts.map((collection) => (
-              // @ts-expect-error
               <Tabs.Content key={collection.id} value={collection.id}>
                 <ProductRail
                   handle={collection.handle ?? ""}
