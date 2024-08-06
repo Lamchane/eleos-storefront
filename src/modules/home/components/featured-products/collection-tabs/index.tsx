@@ -3,11 +3,11 @@
 import React from "react"
 import { ProductCollectionWithPreviews } from "types/global"
 
-// import { Tabs } from "@medusajs/ui"
+import { Tabs } from "@medusajs/ui"
 import { Region } from "@medusajs/medusa"
 
 import ProductRail from "@modules/home/components/featured-products/product-rail"
-import Tabs from "../tab"
+// import Tabs from "../tab"
 
 type Props = {
   collectionWithProducts: ProductCollectionWithPreviews[]
@@ -29,28 +29,31 @@ function CollectionWithProductRail({ collectionWithProducts, region }: Props) {
   return (
     <div className="w-full px-4">
       {collectionWithProducts.length > 0 && (
-        // <Tabs defaultValue={collectionWithProducts[0].id}>
-        //   <Tabs.List className="flex justify-center">
-        //     {collectionWithProducts.map((collection) => (
-        //       <Tabs.Trigger key={collection.id} value={collection.id}>
-        //         {collection.title}
-        //       </Tabs.Trigger>
-        //     ))}
-        //   </Tabs.List>
-        //   <div className="mt-2">
-        //     {collectionWithProducts.map((collection) => (
-        //       <Tabs.Content key={collection.id} value={collection.id}>
-        //         <ProductRail
-        //           handle={collection.handle ?? ""}
-        //           products={collection.products ?? []}
-        //           region={region}
-        //         />
-        //       </Tabs.Content>
-        //     ))}
-        //   </div>
-        // </Tabs>
+        // @ts-expect-error
+        <Tabs defaultValue={collectionWithProducts[0].id}>
+          {/* @ts-expect-error */}
+          <Tabs.List className="flex justify-center">
+            {collectionWithProducts.map((collection) => (
+              <Tabs.Trigger key={collection.id} value={collection.id}>
+                {collection.title}
+              </Tabs.Trigger>
+            ))}
+          </Tabs.List>
+          <div className="mt-2">
+            {collectionWithProducts.map((collection) => (
+              // @ts-expect-error
+              <Tabs.Content key={collection.id} value={collection.id}>
+                <ProductRail
+                  handle={collection.handle ?? ""}
+                  products={collection.products ?? []}
+                  region={region}
+                />
+              </Tabs.Content>
+            ))}
+          </div>
+        </Tabs>
 
-        <Tabs tabs={tabsData} />
+        // <Tabs tabs={tabsData} />
       )}
     </div>
   )
