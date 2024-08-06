@@ -16,7 +16,7 @@ type Props = {
 function CollectionWithProductRail({ collectionWithProducts, region }: Props) {
   return (
     <div className="w-full px-4">
-      {collectionWithProducts && (
+      {collectionWithProducts.length > 0 && (
         <Tabs defaultValue={collectionWithProducts[0].id}>
           <Tabs.List className="flex justify-center">
             {collectionWithProducts.map((collection) => (
@@ -28,11 +28,12 @@ function CollectionWithProductRail({ collectionWithProducts, region }: Props) {
           <div className="mt-2">
             {collectionWithProducts.map((collection) => (
               <Tabs.Content key={collection.id} value={collection.id}>
-                <ProductRail
+                {/* <ProductRail
                   handle={collection.handle ?? ""}
                   products={collection.products ?? []}
                   region={region}
-                />
+                /> */}
+                {JSON.stringify(collection.products)}
               </Tabs.Content>
             ))}
           </div>
