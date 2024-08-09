@@ -40,7 +40,7 @@ export default function ProductPreview({
       href={`/products/${productPreview.handle}`}
       className="group"
     >
-      <div data-testid="product-wrapper" className="w-40 small:w-full">
+      <div data-testid="product-wrapper" className="">
         <Thumbnail
           thumbnail={productPreview.thumbnail}
           size="full"

@@ -341,10 +341,34 @@ export const listCustomerOrders = cache(async function (
     .catch((err) => medusaError(err))
 })
 
+export const addItemToWishlist = (
+  customerId: string,
+  data: { variant_id: string; quantity: number }
+) => {
+  return medusaClient.client.request(
+    "POST",
+    `/store/customers/${customerId}/wishlist`,
+    data
+  )
+}
+
+export const deleteItemFromWishlist = (
+  customerId: string,
+  data: { index: number }
+) => {
+  return medusaClient.client.request(
+    "DELETE",
+    `/store/customers/${customerId}/wishlist`,
+    data
+  )
+}
+
 export const listCustomerWishlist = cache(async function () {
   const headers = getMedusaHeaders(["customer"])
 
   return medusaClient.customers.retrieve(headers).then(({ customer }) => {
+    if (!customer.metadata) return []
+
     const wishlist = (customer.metadata.wishlist as LineItem[]) || []
     return wishlist
   })

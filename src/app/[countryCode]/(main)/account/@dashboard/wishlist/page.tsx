@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 
 import WishlistOverview from "@modules/account/components/wishlist-overview"
-import { getRegion, listCustomerWishlist } from "@lib/data"
+import { getRegion, listCustomerWishlist, listRegions } from "@lib/data"
 import { notFound } from "next/navigation"
 import { Product } from "@medusajs/product"
 import Login from "../../@login/page"
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Wishlist() {
-  const region = await getRegion("us")
+  const regions = await listRegions()
   const wishlist = await listCustomerWishlist()
 
   if (!wishlist) {
@@ -26,7 +26,9 @@ export default async function Wishlist() {
         <p className="text-base-regular">View your wishlisted Products.</p>
       </div>
       <div>
-        {region && <WishlistOverview wishlist={wishlist} region={region} />}
+        {regions && (
+          <WishlistOverview wishlist={wishlist} region={regions[0]} />
+        )}
       </div>
     </div>
   )

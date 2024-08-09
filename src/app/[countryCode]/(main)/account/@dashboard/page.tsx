@@ -14,8 +14,6 @@ export default async function OverviewTemplate() {
   const customer = await getCustomer().catch(() => null)
   const orders = (await listCustomerOrders().catch(() => null)) || null
 
-  console.log(customer)
-
   if (!customer) {
     notFound()
   }

@@ -10,7 +10,7 @@ export default async function AccountPageLayout({
 }) {
   const customer = await getCustomer().catch(() => null)
 
-  console.log(customer)
+  console.log(customer, "customer")
 
   return (
     <AccountLayout customer={customer}>

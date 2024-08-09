@@ -5,6 +5,7 @@ import { Region } from "@medusajs/medusa"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import ProductPreview from "@modules/products/components/product-preview"
+import WishlistItem from "./wishlist-item"
 
 const WishlistOverview = ({
   wishlist,
@@ -15,18 +16,13 @@ const WishlistOverview = ({
 }) => {
   if (wishlist?.length) {
     return (
-      <div className="grid grid-cols-2 small:grid-cols-4 gap-x-6 gap-y-24 small:gap-y-36">
+      <div className="grid grid-cols-2 small:grid-cols-3 gap-x-6 gap-y-24 small:gap-y-36">
         {wishlist &&
-          wishlist.map((product) => (
-            <ProductPreview
-              key={product.variant.product_id}
-              productPreview={
-                {
-                  ...product,
-                  id: product.variant.product.id,
-                  handle: product.variant.product.handle,
-                } as unknown as Product
-              }
+          wishlist.map((product, index) => (
+            <WishlistItem
+              key={product.id}
+              index={index}
+              product={product}
               region={region}
             />
           ))}

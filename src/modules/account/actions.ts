@@ -1,10 +1,13 @@
 "use server"
 
 import {
+  addItemToWishlist,
   addShippingAddress,
   authenticate,
   createCustomer,
+  deleteItemFromWishlist,
   deleteShippingAddress,
+  getCustomer,
   getToken,
   updateCustomer,
   updateShippingAddress,
@@ -269,4 +272,52 @@ export async function signOut(countryCode: string) {
   revalidateTag("auth")
   revalidateTag("customer")
   redirect(`/${countryCode}/account`)
+}
+
+export async function addToWishlist({
+  variant_id,
+  quantity,
+  countryCode,
+}: {
+  variant_id: string
+  quantity: number
+  countryCode: string
+}) {
+  const customer = await getCustomer()
+
+  if (!customer) {
+    redirect(`/${countryCode}/account/wishlist`)
+  }
+
+  if (!variant_id) {
+    return "Missing product variant ID"
+  }
+
+  try {
+    await addItemToWishlist(customer.id, { variant_id, quantity })
+    revalidateTag("customer")
+  } catch (e) {
+    return "Error adding item to wishlist"
+  }
+}
+
+export async function deleteFromWishlist({
+  index,
+  countryCode,
+}: {
+  index: number
+  countryCode: string
+}) {
+  const customer = await getCustomer()
+
+  if (!customer) {
+    redirect(`/${countryCode}/account/wishlist`)
+  }
+
+  try {
+    await deleteItemFromWishlist(customer.id, { index })
+    revalidateTag("customer")
+  } catch (e) {
+    return "Error adding item to wishlist"
+  }
 }

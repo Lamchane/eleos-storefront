@@ -15,6 +15,7 @@ import OptionSelect from "@modules/products/components/option-select"
 import MobileActions from "../mobile-actions"
 import ProductPrice from "../product-price"
 import { BsHeart } from "react-icons/bs"
+import { addToWishlist } from "@modules/account/actions"
 
 type ProductActionsProps = {
   product: PricedProduct
@@ -36,6 +37,7 @@ export default function ProductActions({
 }: ProductActionsProps) {
   const [options, setOptions] = useState<Record<string, string>>({})
   const [isAdding, setIsAdding] = useState(false)
+  const [wishlisting, setWishlisting] = useState(false)
 
   const countryCode = useParams().countryCode as string
 
@@ -136,6 +138,20 @@ export default function ProductActions({
     setIsAdding(false)
   }
 
+  const handleAddToWishlist = async () => {
+    if (!variant?.id) return null
+
+    setWishlisting(true)
+
+    await addToWishlist({
+      variant_id: variant.id,
+      quantity: 1,
+      countryCode,
+    })
+
+    setWishlisting(false)
+  }
+
   return (
     <>
       <div className="flex flex-col gap-y-6" ref={actionsRef}>
@@ -183,6 +199,9 @@ export default function ProductActions({
 
         <Button
           variant="transparent"
+          onClick={handleAddToWishlist}
+          isLoading={wishlisting}
+          disabled={!variant || wishlisting}
           className="w-full h-12 border border-gray-400 text-red-400"
         >
           <BsHeart />
