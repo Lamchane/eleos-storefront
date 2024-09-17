@@ -22,6 +22,7 @@ export const RazorpayPaymentButton = ({
   const [Razorpay] = useRazorpay()
 
   const orderData = session.data as Record<string, string>
+
   const onPaymentCompleted = async () => {
     await placeOrder().catch(() => {
       setErrorMessage("An error occurred, please try again.")
@@ -36,7 +37,7 @@ export const RazorpayPaymentButton = ({
       amount: session.amount.toString(),
       order_id: orderData.id,
       currency: cart.region.currency_code.toLocaleUpperCase(),
-      name: process.env.COMPANY_NAME ?? "your company name ",
+      name: process.env.NEXT_PUBLIC_SHOP_NAME ?? "your company name ",
       description: `Order number ${orderData.id}`,
 
       image: "https://example.com/your_logo",
@@ -75,6 +76,7 @@ export const RazorpayPaymentButton = ({
     razorpay.on("payment.authorized", function (response: any) {})
     razorpay.on("payment.captured", function (response: any) {})
   }, [Razorpay])
+
   return (
     <>
       <Button disabled={submitting || notReady} onClick={handlePayment}>
