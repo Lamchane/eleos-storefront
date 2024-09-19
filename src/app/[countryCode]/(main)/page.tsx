@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 
-import { getCollectionsByDisplaySection } from "@lib/data"
+import { getCategoriesList, getCollectionsByDisplaySection } from "@lib/data"
 
 import FeaturedProducts from "@modules/home/components/featured-products"
 

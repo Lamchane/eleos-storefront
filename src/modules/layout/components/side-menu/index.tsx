@@ -1,23 +1,36 @@
 "use client"
 
-import { Popover, Transition } from "@headlessui/react"
-import { ArrowRightMini, XMark } from "@medusajs/icons"
+import { Disclosure, Popover, Transition } from "@headlessui/react"
+import { ArrowRightMini, XMark, ChevronDown } from "@medusajs/icons"
 import { Region } from "@medusajs/medusa"
-import { Text, clx, useToggleState } from "@medusajs/ui"
+import {
+  Drawer,
+  ProgressAccordion,
+  Text,
+  clx,
+  useToggleState,
+} from "@medusajs/ui"
 import { Fragment } from "react"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CountrySelect from "../country-select"
+import { ProductCategory } from "@medusajs/medusa"
+import { ProductCollection } from "@medusajs/medusa"
 
 const SideMenuItems = {
-  Home: "/",
-  Store: "/store",
-  Search: "/search",
   Account: "/account",
   Cart: "/cart",
 }
 
-const SideMenu = ({ regions }: { regions: Region[] | null }) => {
+const SideMenu = ({
+  regions,
+  categories,
+  collections,
+}: {
+  regions: Region[] | null
+  categories: ProductCategory[] | null
+  collections: ProductCollection[] | null
+}) => {
   const toggleState = useToggleState()
 
   return (
@@ -50,27 +63,90 @@ const SideMenu = ({ regions }: { regions: Region[] | null }) => {
                     data-testid="nav-menu-popup"
                     className="flex flex-col h-full bg-[rgba(3,7,18,0.5)] rounded-rounded justify-between p-6"
                   >
-                    <div className="flex justify-end" id="xmark">
-                      <button data-testid="close-menu-button" onClick={close}>
-                        <XMark />
-                      </button>
-                    </div>
-                    <ul className="flex flex-col gap-6 items-start justify-start">
-                      {Object.entries(SideMenuItems).map(([name, href]) => {
-                        return (
-                          <li key={name}>
-                            <LocalizedClientLink
-                              href={href}
-                              className="text-3xl leading-10 hover:text-ui-fg-disabled"
-                              onClick={close}
-                              data-testid={`${name.toLowerCase()}-link`}
+                    <div className="flex flex-col">
+                      <div className="flex justify-end" id="xmark">
+                        <button data-testid="close-menu-button" onClick={close}>
+                          <XMark />
+                        </button>
+                      </div>
+
+                      <ul className="mt-10 flex flex-col gap-4 items-start justify-start">
+                        {collections?.map((collection) => {
+                          return (
+                            <li
+                              key={collection.id}
+                              className="w-full py-2 border-b border-gray-50 border-opacity-25"
                             >
-                              {name}
-                            </LocalizedClientLink>
-                          </li>
-                        )
-                      })}
-                    </ul>
+                              <LocalizedClientLink
+                                href={`/collections/${collection.handle}`}
+                                className="text-xl leading-10 hover:text-ui-fg-disabled"
+                                onClick={close}
+                              >
+                                {collection.title}
+                              </LocalizedClientLink>
+                            </li>
+                          )
+                        })}
+                      </ul>
+
+                      <Disclosure
+                        as="div"
+                        className="w-full mt-6"
+                        defaultOpen={false}
+                      >
+                        <div className="w-full flex justify-between items-center py-2 border-b border-gray-50 border-opacity-40">
+                          <LocalizedClientLink
+                            href={"/store"}
+                            className="text-xl leading-10 hover:text-ui-fg-disabled"
+                            onClick={close}
+                          >
+                            Shop
+                          </LocalizedClientLink>
+                          <Disclosure.Button className={"group"}>
+                            <ChevronDown className="size-5 fill-white/60 group-data-[hover]:fill-white/50 group-data-[open]:rotate-180" />
+                          </Disclosure.Button>
+                        </div>
+
+                        <Disclosure.Panel className="origin-top transition duration-200 ease-out mt-2 text-sm/5 text-white/50">
+                          <ul className="flex flex-col gap-4 items-start justify-start">
+                            {categories?.map((category) => {
+                              return (
+                                <li key={category.id}>
+                                  <LocalizedClientLink
+                                    href={`/categories/${category.handle}`}
+                                    className="text-xl leading-10 hover:text-ui-fg-disabled"
+                                    onClick={close}
+                                  >
+                                    {category.name}
+                                  </LocalizedClientLink>
+                                </li>
+                              )
+                            })}
+                          </ul>
+                        </Disclosure.Panel>
+                      </Disclosure>
+
+                      <ul className="mt-6 flex flex-col gap-4 items-start justify-start">
+                        {Object.entries(SideMenuItems).map(([name, href]) => {
+                          return (
+                            <li
+                              key={name}
+                              className="w-full py-2 border-b border-gray-50 border-opacity-25"
+                            >
+                              <LocalizedClientLink
+                                href={href}
+                                className="text-xl leading-10 hover:text-ui-fg-disabled"
+                                onClick={close}
+                                data-testid={`${name.toLowerCase()}-link`}
+                              >
+                                {name}
+                              </LocalizedClientLink>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    </div>
+
                     <div className="flex flex-col gap-y-6">
                       <div
                         className="flex justify-between"
@@ -103,6 +179,89 @@ const SideMenu = ({ regions }: { regions: Region[] | null }) => {
         </Popover>
       </div>
     </div>
+  )
+}
+
+const SideDrawer = ({
+  regions,
+  categories,
+}: {
+  regions: Region[] | null
+  categories: ProductCategory[] | null
+}) => {
+  const toggleState = useToggleState()
+
+  return (
+    <Drawer>
+      <Drawer.Trigger asChild>
+        <button>Menu</button>
+      </Drawer.Trigger>
+      <Drawer.Content>
+        <Drawer.Header>
+          <Drawer.Title>ELEOS</Drawer.Title>
+          <Drawer.Close asChild>
+            <button data-testid="close-menu-button">
+              <XMark />
+            </button>
+          </Drawer.Close>
+        </Drawer.Header>
+        <Drawer.Body className="p-4">
+          <ul className="flex flex-col gap-6 items-start justify-start">
+            {categories?.map((category) => {
+              return (
+                <li key={category.id}>
+                  <LocalizedClientLink
+                    href={`/categories/${category.handle}`}
+                    className="text-3xl leading-10 hover:text-ui-fg-disabled"
+                    onClick={close}
+                  >
+                    {category.name}
+                  </LocalizedClientLink>
+                </li>
+              )
+            })}
+          </ul>
+          <ul className="flex flex-col gap-6 items-start justify-start">
+            {Object.entries(SideMenuItems).map(([name, href]) => {
+              return (
+                <li key={name}>
+                  <LocalizedClientLink
+                    href={href}
+                    className="text-3xl leading-10 hover:text-ui-fg-disabled"
+                    onClick={close}
+                    data-testid={`${name.toLowerCase()}-link`}
+                  >
+                    {name}
+                  </LocalizedClientLink>
+                </li>
+              )
+            })}
+          </ul>
+        </Drawer.Body>
+        <Drawer.Footer>
+          <div className="flex flex-col gap-y-6">
+            <div
+              className="flex justify-between"
+              onMouseEnter={toggleState.open}
+              onMouseLeave={toggleState.close}
+            >
+              {regions && (
+                <CountrySelect toggleState={toggleState} regions={regions} />
+              )}
+              <ArrowRightMini
+                className={clx(
+                  "transition-transform duration-150",
+                  toggleState.state ? "-rotate-90" : ""
+                )}
+              />
+            </div>
+            <Text className="flex justify-between txt-compact-small">
+              © {new Date().getFullYear()} Eleos Store. All rights reserved.
+            </Text>
+          </div>
+        </Drawer.Footer>
+      </Drawer.Content>
+    </Drawer>
   )
 }
 
