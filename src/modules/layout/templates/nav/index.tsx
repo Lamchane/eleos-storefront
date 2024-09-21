@@ -10,7 +10,6 @@ import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
 import { BsHeart, BsPerson } from "react-icons/bs"
 import { ProductCategory } from "@medusajs/medusa"
-import { Drawer } from "@medusajs/ui"
 
 export default async function Nav() {
   const regions = await listRegions().then((regions) => regions)

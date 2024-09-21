@@ -3,13 +3,7 @@
 import { Disclosure, Popover, Transition } from "@headlessui/react"
 import { ArrowRightMini, XMark, ChevronDown } from "@medusajs/icons"
 import { Region } from "@medusajs/medusa"
-import {
-  Drawer,
-  ProgressAccordion,
-  Text,
-  clx,
-  useToggleState,
-} from "@medusajs/ui"
+import { Text, clx, useToggleState } from "@medusajs/ui"
 import { Fragment } from "react"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
@@ -179,89 +173,6 @@ const SideMenu = ({
         </Popover>
       </div>
     </div>
-  )
-}
-
-const SideDrawer = ({
-  regions,
-  categories,
-}: {
-  regions: Region[] | null
-  categories: ProductCategory[] | null
-}) => {
-  const toggleState = useToggleState()
-
-  return (
-    <Drawer>
-      <Drawer.Trigger asChild>
-        <button>Menu</button>
-      </Drawer.Trigger>
-      <Drawer.Content>
-        <Drawer.Header>
-          <Drawer.Title>ELEOS</Drawer.Title>
-          <Drawer.Close asChild>
-            <button data-testid="close-menu-button">
-              <XMark />
-            </button>
-          </Drawer.Close>
-        </Drawer.Header>
-        <Drawer.Body className="p-4">
-          <ul className="flex flex-col gap-6 items-start justify-start">
-            {categories?.map((category) => {
-              return (
-                <li key={category.id}>
-                  <LocalizedClientLink
-                    href={`/categories/${category.handle}`}
-                    className="text-3xl leading-10 hover:text-ui-fg-disabled"
-                    onClick={close}
-                  >
-                    {category.name}
-                  </LocalizedClientLink>
-                </li>
-              )
-            })}
-          </ul>
-          <ul className="flex flex-col gap-6 items-start justify-start">
-            {Object.entries(SideMenuItems).map(([name, href]) => {
-              return (
-                <li key={name}>
-                  <LocalizedClientLink
-                    href={href}
-                    className="text-3xl leading-10 hover:text-ui-fg-disabled"
-                    onClick={close}
-                    data-testid={`${name.toLowerCase()}-link`}
-                  >
-                    {name}
-                  </LocalizedClientLink>
-                </li>
-              )
-            })}
-          </ul>
-        </Drawer.Body>
-        <Drawer.Footer>
-          <div className="flex flex-col gap-y-6">
-            <div
-              className="flex justify-between"
-              onMouseEnter={toggleState.open}
-              onMouseLeave={toggleState.close}
-            >
-              {regions && (
-                <CountrySelect toggleState={toggleState} regions={regions} />
-              )}
-              <ArrowRightMini
-                className={clx(
-                  "transition-transform duration-150",
-                  toggleState.state ? "-rotate-90" : ""
-                )}
-              />
-            </div>
-            <Text className="flex justify-between txt-compact-small">
-              © {new Date().getFullYear()} Eleos Store. All rights reserved.
-            </Text>
-          </div>
-        </Drawer.Footer>
-      </Drawer.Content>
-    </Drawer>
   )
 }
 
