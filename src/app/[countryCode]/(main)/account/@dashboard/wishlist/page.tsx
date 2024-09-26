@@ -5,6 +5,7 @@ import { getRegion, listCustomerWishlist, listRegions } from "@lib/data"
 import { notFound } from "next/navigation"
 import { Product } from "@medusajs/product"
 import Login from "../../@login/page"
+import { cookies } from "next/headers"
 
 export const metadata: Metadata = {
   title: "Wishlist",
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
 export default async function Wishlist() {
   const regions = await listRegions()
   const wishlist = await listCustomerWishlist()
+
+  const cartId = cookies().get("_medusa_cart_id")?.value
 
   if (!wishlist) {
     notFound()
@@ -27,7 +30,11 @@ export default async function Wishlist() {
       </div>
       <div>
         {regions && (
-          <WishlistOverview wishlist={wishlist} region={regions[0]} />
+          <WishlistOverview
+            wishlist={wishlist}
+            region={regions[0]}
+            cartId={cartId ?? ""}
+          />
         )}
       </div>
     </div>

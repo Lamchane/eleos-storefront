@@ -27,7 +27,7 @@ function CollectionWithProductRail({ collectionWithProducts, region }: Props) {
   }))
 
   return (
-    <div className="w-full px-4">
+    <div className="w-full">
       {collectionWithProducts.length > 0 && (
         // @ts-expect-error
         <Tabs defaultValue={collectionWithProducts[0].id}>

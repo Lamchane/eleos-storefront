@@ -36,7 +36,7 @@ export default function ProductRail({
             ))}
         </ul>
       </div>
-      <div className="flex-1 py-12 flex justify-center items-center">
+      <div className="flex-1 pt-12 flex justify-center items-center">
         <Link
           href={`/collections/${handle}`}
           className="border border-gray-400 hover:border-gray-600 px-6 py-2"

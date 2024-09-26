@@ -1,5 +1,6 @@
 "use client"
 
+import { addItem, getCart } from "@lib/data"
 import { LineItem, Product, Region } from "@medusajs/medusa"
 import { Button } from "@medusajs/ui"
 import { deleteFromWishlist } from "@modules/account/actions"
@@ -11,23 +12,44 @@ type WishlistItemProps = {
   index: number
   product: LineItem
   region: Region
+  cartId: string
 }
 
 export default function WishlistItem({
   index,
   product,
   region,
+  cartId,
 }: WishlistItemProps) {
   const [loading, setLoading] = useState(false)
 
-  // const handleRemoveFromWishlist = async () => {
+  const handleMoveItemToCart = async () => {
+    setLoading(true)
 
-  //   setLoading(true)
+    await addItem({
+      cartId: cartId,
+      variantId: product.variant_id as string,
+      quantity: 1,
+    })
 
-  //   await deleteFromWishlist({ index, countryCode: region })
+    await deleteFromWishlist({
+      index,
+      countryCode: region.countries[0].display_name,
+    })
 
-  //   setLoading(false)
-  // }
+    setLoading(false)
+  }
+
+  const handleRemoveFromWishlist = async () => {
+    setLoading(true)
+
+    await deleteFromWishlist({
+      index,
+      countryCode: region.countries[0].display_name,
+    })
+
+    setLoading(false)
+  }
 
   return (
     <div className="self-stretch">
@@ -44,13 +66,14 @@ export default function WishlistItem({
       />
       <div className="mt-2 flex items-center gap-2">
         <Button
+          onClick={handleMoveItemToCart}
           variant={"transparent"}
           className="flex-1 uppercase border border-gray-400"
         >
           Move To Bag
         </Button>
         <Button
-          // onClick={removeFromWishlist}
+          onClick={handleRemoveFromWishlist}
           variant={"transparent"}
           className="border border-gray-900 p-1"
         >
