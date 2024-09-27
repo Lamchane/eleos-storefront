@@ -5,6 +5,7 @@ import { LineItem, Product, Region } from "@medusajs/medusa"
 import { Button } from "@medusajs/ui"
 import { deleteFromWishlist } from "@modules/account/actions"
 import ProductPreview from "@modules/products/components/product-preview"
+// import { useRouter } from "next/router"
 import { useState } from "react"
 import { BsTrash3 } from "react-icons/bs"
 
@@ -12,33 +13,36 @@ type WishlistItemProps = {
   index: number
   product: LineItem
   region: Region
-  cartId: string
+  // cartId: string
 }
 
 export default function WishlistItem({
   index,
   product,
   region,
-  cartId,
-}: WishlistItemProps) {
+}: // cartId,
+WishlistItemProps) {
+  // const router = useRouter()
   const [loading, setLoading] = useState(false)
 
-  const handleMoveItemToCart = async () => {
-    setLoading(true)
+  // const handleMoveItemToCart = async () => {
+  //   setLoading(true)
 
-    await addItem({
-      cartId: cartId,
-      variantId: product.variant_id as string,
-      quantity: 1,
-    })
+  //   await addItem({
+  //     cartId: cartId,
+  //     variantId: product.variant_id as string,
+  //     quantity: 1,
+  //   })
 
-    await deleteFromWishlist({
-      index,
-      countryCode: region.countries[0].display_name,
-    })
+  //   await deleteFromWishlist({
+  //     index,
+  //     countryCode: region.countries[0].display_name,
+  //   })
 
-    setLoading(false)
-  }
+  //   setLoading(false)
+
+  //   router.push("/cart")
+  // }
 
   const handleRemoveFromWishlist = async () => {
     setLoading(true)
@@ -66,7 +70,7 @@ export default function WishlistItem({
       />
       <div className="mt-2 flex items-center gap-2">
         <Button
-          onClick={handleMoveItemToCart}
+          // onClick={handleMoveItemToCart}
           variant={"transparent"}
           className="flex-1 uppercase border border-gray-400"
         >

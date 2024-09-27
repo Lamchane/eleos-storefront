@@ -10,11 +10,11 @@ import WishlistItem from "./wishlist-item"
 const WishlistOverview = ({
   wishlist,
   region,
-  cartId,
-}: {
+}: // cartId,
+{
   wishlist: LineItem[]
   region: Region
-  cartId: string
+  // cartId: string
 }) => {
   if (wishlist?.length) {
     return (
@@ -26,7 +26,7 @@ const WishlistOverview = ({
               index={index}
               product={product}
               region={region}
-              cartId={cartId}
+              // cartId={cartId}
             />
           ))}
       </div>
