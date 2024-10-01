@@ -29,11 +29,14 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
 
   return (
     <>
+      <div className="block sm:hidden w-full relative">
+        <ImageGallery images={product?.images || []} />
+      </div>
       <div
         className="content-container py-12 grid small:grid-cols-2 grid-cols-1 gap-6 relative"
         data-testid="product-container"
       >
-        <div className="block w-full relative">
+        <div className="hidden sm:block w-full relative">
           <ImageGallery images={product?.images || []} />
         </div>
         <div className="w-full small:p-12 flex flex-col gap-y-12">

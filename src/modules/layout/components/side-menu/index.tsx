@@ -10,6 +10,7 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import CountrySelect from "../country-select"
 import { ProductCategory } from "@medusajs/medusa"
 import { ProductCollection } from "@medusajs/medusa"
+import { BsFilterLeft, BsList, BsMenuButton } from "react-icons/bs"
 
 const SideMenuItems = {
   Account: "/account",
@@ -38,7 +39,12 @@ const SideMenu = ({
                   data-testid="nav-menu-button"
                   className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base"
                 >
-                  Menu
+                  <BsList
+                    size={32}
+                    stroke="1"
+                    color="gray"
+                    className="text-gray-600/25"
+                  />
                 </Popover.Button>
               </div>
 
@@ -69,7 +75,7 @@ const SideMenu = ({
                           return (
                             <li
                               key={collection.id}
-                              className="w-full py-2 border-b border-gray-50 border-opacity-25"
+                              className="w-full py-2 border-b border-gray-50/25"
                             >
                               <LocalizedClientLink
                                 href={`/collections/${collection.handle}`}
@@ -88,15 +94,19 @@ const SideMenu = ({
                         className="w-full mt-6"
                         defaultOpen={false}
                       >
-                        <div className="w-full flex justify-between items-center py-2 border-b border-gray-50 border-opacity-40">
+                        <div className="w-full flex justify-between items-center py-2 border-b border-gray-50/25 border-opacity-4 ">
                           <LocalizedClientLink
                             href={"/store"}
-                            className="text-xl leading-10 hover:text-ui-fg-disabled"
+                            className="flex-1 text-xl leading-10 hover:text-ui-fg-disabled border-r border-gray-50/25"
                             onClick={close}
                           >
                             Shop
                           </LocalizedClientLink>
-                          <Disclosure.Button className={"group"}>
+                          <Disclosure.Button
+                            className={
+                              "group w-1/5 flex justify-center items-center"
+                            }
+                          >
                             <ChevronDown className="size-5 fill-white/60 group-data-[hover]:fill-white/50 group-data-[open]:rotate-180" />
                           </Disclosure.Button>
                         </div>
@@ -125,7 +135,7 @@ const SideMenu = ({
                           return (
                             <li
                               key={name}
-                              className="w-full py-2 border-b border-gray-50 border-opacity-25"
+                              className="w-full py-2 border-b border-gray-50/25"
                             >
                               <LocalizedClientLink
                                 href={href}

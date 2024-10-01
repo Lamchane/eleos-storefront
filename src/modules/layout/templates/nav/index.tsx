@@ -8,7 +8,7 @@ import {
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
-import { BsHeart, BsPerson } from "react-icons/bs"
+import { BsHeart, BsPerson, BsSearch } from "react-icons/bs"
 import { ProductCategory } from "@medusajs/medusa"
 
 export default async function Nav() {
@@ -43,17 +43,17 @@ export default async function Nav() {
           </div>
 
           <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
+            {process.env.FEATURE_SEARCH_ENABLED && (
+              <LocalizedClientLink
+                className="hover:text-ui-fg-base"
+                href="/search"
+                scroll={false}
+                data-testid="nav-search-link"
+              >
+                <BsSearch size={24} />
+              </LocalizedClientLink>
+            )}
             <div className="hidden small:flex items-center gap-x-6 h-full">
-              {process.env.FEATURE_SEARCH_ENABLED && (
-                <LocalizedClientLink
-                  className="hover:text-ui-fg-base"
-                  href="/search"
-                  scroll={false}
-                  data-testid="nav-search-link"
-                >
-                  Search
-                </LocalizedClientLink>
-              )}
               <LocalizedClientLink
                 className="hover:text-ui-fg-base"
                 href="/account"
@@ -61,14 +61,14 @@ export default async function Nav() {
               >
                 <BsPerson size={32} />
               </LocalizedClientLink>
+              <LocalizedClientLink
+                className="hover:text-ui-fg-base"
+                href="/account/wishlist"
+                data-testid="nav-account-link"
+              >
+                <BsHeart size={24} />
+              </LocalizedClientLink>
             </div>
-            <LocalizedClientLink
-              className="hover:text-ui-fg-base"
-              href="/account/wishlist"
-              data-testid="nav-account-link"
-            >
-              <BsHeart size={24} />
-            </LocalizedClientLink>
             <Suspense
               fallback={
                 <LocalizedClientLink

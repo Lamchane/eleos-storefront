@@ -57,15 +57,15 @@ const Item: React.FC<AccordionItemProps> = ({
       {/* @ts-expect-error */}
       <AccordionPrimitive.Header className="px-1">
         <div className="flex flex-col">
-          <div className="flex w-full items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Text className="text-ui-fg-subtle text-sm">{title}</Text>
-            </div>
-            {/* @ts-expect-error */}
-            <AccordionPrimitive.Trigger>
+          <AccordionPrimitive.Trigger>
+            <div className="flex w-full items-center justify-between">
+              <div className="flex items-center gap-4">
+                <Text className="text-ui-fg-subtle text-sm">{title}</Text>
+              </div>
+              {/* @ts-expect-error */}
               {customTrigger || <MorphingTrigger />}
-            </AccordionPrimitive.Trigger>
-          </div>
+            </div>
+          </AccordionPrimitive.Trigger>
           {subtitle && (
             <Text as="span" size="small" className="mt-1">
               {subtitle}

@@ -35,8 +35,8 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
         {tabs.map((tab, i) => (
           <Accordion.Item
             key={i}
-            title={tab.label}
             headingSize="medium"
+            title={tab.label}
             value={tab.label}
           >
             {tab.component}

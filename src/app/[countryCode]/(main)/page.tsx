@@ -42,7 +42,7 @@ export default async function Home({
       </section>
 
       <section>
-        <div className="mx-auto max-w-7xl pb-12 space-y-6">
+        <div className="mx-auto max-w-7xl pb-12 space-y-6 md:px-4">
           <h2 className="text-center text-3xl font-semibold">
             Shop As You Like
           </h2>
