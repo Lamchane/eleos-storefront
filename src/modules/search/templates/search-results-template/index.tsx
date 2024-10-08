@@ -5,6 +5,7 @@ import RefinementList from "@modules/store/components/refinement-list"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import BottomNav from "@modules/layout/components/bottom-menu"
 
 type SearchResultsTemplateProps = {
   query: string
@@ -56,6 +57,8 @@ const SearchResultsTemplate = ({
           <Text className="ml-8 small:ml-14 mt-3">No results.</Text>
         )}
       </div>
+
+      <BottomNav />
     </>
   )
 }

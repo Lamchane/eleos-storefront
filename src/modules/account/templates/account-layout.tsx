@@ -4,6 +4,7 @@ import UnderlineLink from "@modules/common/components/interactive-link"
 
 import AccountNav from "../components/account-nav"
 import { Customer } from "@medusajs/medusa"
+import BottomNav from "@modules/layout/components/bottom-menu"
 
 interface AccountLayoutProps {
   customer: Omit<Customer, "password_hash"> | null
@@ -36,6 +37,8 @@ const AccountLayout: React.FC<AccountLayoutProps> = ({
           </div>
         </div>
       </div>
+
+      <BottomNav />
     </div>
   )
 }

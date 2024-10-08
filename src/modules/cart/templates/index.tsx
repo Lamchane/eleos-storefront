@@ -5,6 +5,7 @@ import { CartWithCheckoutStep } from "types/global"
 import SignInPrompt from "../components/sign-in-prompt"
 import Divider from "@modules/common/components/divider"
 import { Customer } from "@medusajs/medusa"
+import BottomNav from "@modules/layout/components/bottom-menu"
 
 const CartTemplate = ({
   cart,
@@ -45,6 +46,8 @@ const CartTemplate = ({
           </div>
         )}
       </div>
+
+      <BottomNav />
     </div>
   )
 }

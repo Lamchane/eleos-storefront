@@ -9,6 +9,8 @@ import CollectionSwiper, {
 } from "@modules/home/components/collection-swiper"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Image from "next/image"
+import { Suspense } from "react"
+import BottomNav from "@modules/layout/components/bottom-menu"
 
 export const metadata: Metadata = {
   title: "Enhance Your Style With Premium Quality Accessories - ELEOS",
@@ -162,6 +164,8 @@ export default async function Home({
           )}
         </div>
       </section>
+
+      <BottomNav />
     </>
   )
 }
