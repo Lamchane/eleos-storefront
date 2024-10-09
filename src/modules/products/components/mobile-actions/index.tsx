@@ -13,6 +13,7 @@ import X from "@modules/common/icons/x"
 import { getProductPrice } from "@lib/util/get-product-price"
 import { Region } from "@medusajs/medusa"
 import OptionSelect from "../option-select"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 type MobileActionsProps = {
   product: PricedProduct
@@ -23,6 +24,7 @@ type MobileActionsProps = {
   inStock?: boolean
   handleAddToCart: () => void
   isAdding?: boolean
+  isAdded?: boolean
   show: boolean
   optionsDisabled: boolean
 }
@@ -36,6 +38,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
   inStock,
   handleAddToCart,
   isAdding,
+  isAdded,
   show,
   optionsDisabled,
 }) => {
@@ -124,19 +127,27 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                   </div>
                 </Button>
               )}
-              <Button
-                onClick={handleAddToCart}
-                disabled={!inStock || !variant}
-                className="w-full"
-                isLoading={isAdding}
-                data-testid="mobile-cart-button"
-              >
-                {!variant
-                  ? "Select variant"
-                  : !inStock
-                  ? "Out of stock"
-                  : "Add to cart"}
-              </Button>
+              {isAdded ? (
+                <Button asChild className="w-full uppercase">
+                  <LocalizedClientLink href="/cart">
+                    Go To Bag
+                  </LocalizedClientLink>
+                </Button>
+              ) : (
+                <Button
+                  onClick={handleAddToCart}
+                  disabled={!inStock || !variant}
+                  className="w-full"
+                  isLoading={isAdding}
+                  data-testid="mobile-cart-button"
+                >
+                  {!variant
+                    ? "Select variant"
+                    : !inStock
+                    ? "Out of stock"
+                    : "Add to cart"}
+                </Button>
+              )}
             </div>
           </div>
         </Transition>

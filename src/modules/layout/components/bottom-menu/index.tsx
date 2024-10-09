@@ -20,9 +20,11 @@ async function CartButton() {
       href="/cart"
       className="relative grid grid-cols-1 gap-1 place-items-center place-content-center"
     >
-      <div className="absolute w-4 h-4 flex items-center justify-center top-0 right-4 p-1 text-xs bg-black text-white rounded-full">
-        {totalItems}
-      </div>
+      {totalItems && (
+        <div className="absolute w-4 h-4 flex items-center justify-center top-0 right-4 p-1 text-xs bg-black text-white rounded-full">
+          {totalItems}
+        </div>
+      )}
 
       <MdShoppingBag size={28} />
       <p className="text-xs uppercase">Bag</p>

@@ -16,6 +16,7 @@ import MobileActions from "../mobile-actions"
 import ProductPrice from "../product-price"
 import { BsHeart } from "react-icons/bs"
 import { addToWishlist } from "@modules/account/actions"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 type ProductActionsProps = {
   product: PricedProduct
@@ -38,6 +39,8 @@ export default function ProductActions({
   const [options, setOptions] = useState<Record<string, string>>({})
   const [isAdding, setIsAdding] = useState(false)
   const [wishlisting, setWishlisting] = useState(false)
+
+  const [isAdded, setIsAdded] = useState(false)
 
   const countryCode = useParams().countryCode as string
 
@@ -136,6 +139,7 @@ export default function ProductActions({
     })
 
     setIsAdding(false)
+    setIsAdded(true)
   }
 
   const handleAddToWishlist = async () => {
@@ -182,20 +186,26 @@ export default function ProductActions({
           <Text>(incl. of all taxes)</Text>
         </div>
 
-        <Button
-          onClick={handleAddToCart}
-          disabled={!inStock || !variant || !!disabled || isAdding}
-          variant="primary"
-          className="w-full h-12 uppercase"
-          isLoading={isAdding}
-          data-testid="add-product-button"
-        >
-          {!variant
-            ? "Select variant"
-            : !inStock
-            ? "Out of stock"
-            : "Add to cart"}
-        </Button>
+        {isAdded ? (
+          <Button asChild className="w-full h-12 uppercase">
+            <LocalizedClientLink href="/cart">Go To Bag</LocalizedClientLink>
+          </Button>
+        ) : (
+          <Button
+            onClick={handleAddToCart}
+            disabled={!inStock || !variant || !!disabled || isAdding}
+            variant="primary"
+            className="w-full h-12 uppercase"
+            isLoading={isAdding}
+            data-testid="add-product-button"
+          >
+            {!variant
+              ? "Select variant"
+              : !inStock
+              ? "Out of stock"
+              : "Add to cart"}
+          </Button>
+        )}
 
         <Button
           variant="transparent"

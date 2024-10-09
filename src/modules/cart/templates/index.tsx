@@ -28,11 +28,11 @@ const CartTemplate = ({
               )}
               <ItemsTemplate region={cart?.region} items={cart?.items} />
             </div>
-            <div className="relative">
-              <div className="flex flex-col gap-y-8 sticky top-12">
+            <div className="fixed w-full sm:w-auto sm:relative bottom-0 left-0 bg-white p-4 sm:p-0">
+              <div className="sticky flex flex-col gapy-4 sm:gap-y-8 top-0 sm:top-12">
                 {cart && cart.region && (
                   <>
-                    <div className="bg-white py-6">
+                    <div className="bg-white py-0 sm:py-6">
                       <Summary cart={cart} />
                     </div>
                   </>
@@ -47,7 +47,7 @@ const CartTemplate = ({
         )}
       </div>
 
-      <BottomNav />
+      {/* <BottomNav /> */}
     </div>
   )
 }
