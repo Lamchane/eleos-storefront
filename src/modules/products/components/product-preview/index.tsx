@@ -6,7 +6,7 @@ import { ProductPreviewType } from "types/global"
 
 // import { retrievePricedProductById } from "@lib/data"
 // import { getProductPrice } from "@lib/util/get-product-price"
-// import PreviewPrice from "./price"
+import PreviewPrice from "./price"
 
 import { Region } from "@medusajs/medusa"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
@@ -52,7 +52,11 @@ export default function ProductPreview({
           </Text>
           <div className="flex items-center gap-x-2">
             {/* {cheapestPrice && <PreviewPrice price={cheapestPrice} />} */}
-            <Text>{productPreview.price?.calculated_price}</Text>
+            {/* <Text>{productPreview.price?.original_price}</Text> */}
+
+            {productPreview.price && (
+              <PreviewPrice price={productPreview.price} />
+            )}
           </div>
         </div>
       </div>
