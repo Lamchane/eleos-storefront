@@ -11,6 +11,7 @@ import ProductInfo from "@modules/products/templates/product-info"
 import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-related-products"
 import { notFound } from "next/navigation"
 import ProductActionsWrapper from "./product-actions-wrapper"
+import ControlledImageGallery from "../components/controlled-image-gallery"
 
 type ProductTemplateProps = {
   product: PricedProduct
@@ -32,13 +33,15 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
       <div className="block sm:hidden w-full relative">
         <ImageGallery images={product?.images || []} />
       </div>
+
       <div
         className="content-container py-12 grid small:grid-cols-2 grid-cols-1 gap-6 relative"
         data-testid="product-container"
       >
         <div className="hidden sm:block w-full relative">
-          <ImageGallery images={product?.images || []} />
+          <ControlledImageGallery images={product?.images || []} />
         </div>
+
         <div className="w-full small:p-12 flex flex-col gap-y-12">
           <ProductInfo product={product} />
 

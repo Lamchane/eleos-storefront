@@ -41,7 +41,7 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
         // >
         //   {tab.component}
         // </Accordion.Item>
-        <div>
+        <div key={i}>
           <p className="font-semibold">{tab.label}</p>
           {tab.component}
         </div>
