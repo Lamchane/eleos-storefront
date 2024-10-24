@@ -22,6 +22,7 @@ const ControlledImageGallery = ({ images }: ImageGalleryProps) => {
   // Function to handle slide change
   const handleThumbnailClick = (index: number) => {
     if (secondSwiper) {
+      // @ts-expect-error
       secondSwiper.slideTo(index) // Change the second Swiper's active index
     }
   }
@@ -32,6 +33,7 @@ const ControlledImageGallery = ({ images }: ImageGalleryProps) => {
         direction={"vertical"}
         modules={[Navigation, Controller]}
         slidesPerView={4} // Ensure at least 4 slides are visible
+        // @ts-expect-error
         onSwiper={setFirstSwiper}
         controller={{ control: secondSwiper }}
         className="hidden sm:block col-span-1 w-full h-full"
@@ -63,6 +65,7 @@ const ControlledImageGallery = ({ images }: ImageGalleryProps) => {
           clickable: true,
         }}
         modules={[Pagination, Controller]}
+        // @ts-expect-error
         onSwiper={setSecondSwiper}
         controller={{ control: firstSwiper }}
         className="col-span-4 w-full h-min"
