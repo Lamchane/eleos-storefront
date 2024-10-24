@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { Suspense } from "react"
 import { ProductCollectionWithPreviews } from "types/global"
 
 import { Tabs } from "@medusajs/ui"
@@ -15,16 +15,16 @@ type Props = {
 }
 
 function CollectionWithProductRail({ collectionWithProducts, region }: Props) {
-  const tabsData = collectionWithProducts.map((collection) => ({
-    label: collection.title,
-    content: (
-      <ProductRail
-        handle={collection.handle ?? ""}
-        products={collection.products ?? []}
-        region={region}
-      />
-    ),
-  }))
+  // const tabsData = collectionWithProducts.map((collection) => ({
+  //   label: collection.title,
+  //   content: (
+  //     <ProductRail
+  //       handle={collection.handle ?? ""}
+  //       products={collection.products ?? []}
+  //       region={region}
+  //     />
+  //   ),
+  // }))
 
   return (
     <div className="w-full">
@@ -50,8 +50,6 @@ function CollectionWithProductRail({ collectionWithProducts, region }: Props) {
             ))}
           </div>
         </Tabs>
-
-        // <Tabs tabs={tabsData} />
       )}
     </div>
   )
