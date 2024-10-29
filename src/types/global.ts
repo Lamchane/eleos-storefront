@@ -32,6 +32,10 @@ export type ProductCollectionWithPreviews = Omit<
   products: ProductPreviewType[]
 }
 
+export type ProductCategoryWithPreviews = Omit<ProductCategory, "products"> & {
+  products: ProductPreviewType[]
+}
+
 export type InfiniteProductPage = {
   response: {
     products: PricedProduct[]

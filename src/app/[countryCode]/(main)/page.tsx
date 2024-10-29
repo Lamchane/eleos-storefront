@@ -2,7 +2,10 @@ import { Metadata } from "next"
 
 import { getCategoriesList, getCollectionsByDisplaySection } from "@lib/data"
 
-import FeaturedProducts from "@modules/home/components/featured-products"
+import {
+  FeaturedCollections,
+  FeaturedCategories,
+} from "@modules/home/components/featured-products"
 
 import CollectionSwiper, {
   CollectionBanner,
@@ -28,6 +31,8 @@ export default async function Home({
   const { collections: featuredCollections } =
     await getCollectionsByDisplaySection("FeaturedSection")
 
+  const { product_categories } = await getCategoriesList()
+
   return (
     <>
       <CollectionSwiper collections={heroCollections} />
@@ -35,7 +40,7 @@ export default async function Home({
       <section>
         <div className="max-w-7xl mx-auto">
           {featuredCollections.slice(0, 2).length > 0 && (
-            <FeaturedProducts
+            <FeaturedCollections
               collections={featuredCollections.slice(0, 2)}
               countryCode={countryCode}
             />
@@ -56,9 +61,7 @@ export default async function Home({
                   className="relative text-xl leading-10 hover:text-ui-fg-disabled"
                 >
                   <Image
-                    src={
-                      "https://eleos-medusa-uploads.s3.ap-south-1.amazonaws.com/assets/rings.avif"
-                    }
+                    src={"/assets/images/categories/ring2.jpg"}
                     alt=""
                     width="800"
                     height="480"
@@ -75,9 +78,7 @@ export default async function Home({
                   className="relative text-xl leading-10 hover:text-ui-fg-disabled"
                 >
                   <Image
-                    src={
-                      "https://eleos-medusa-uploads.s3.ap-south-1.amazonaws.com/assets/earrings.avif"
-                    }
+                    src={"/assets/images/categories/earring.jpg"}
                     alt=""
                     width="300"
                     height="300"
@@ -94,9 +95,7 @@ export default async function Home({
                   className="relative text-xl leading-10 hover:text-ui-fg-disabled"
                 >
                   <Image
-                    src={
-                      "https://eleos-medusa-uploads.s3.ap-south-1.amazonaws.com/assets/pendant.avif"
-                    }
+                    src={"/assets/images/categories/pendant.jpg"}
                     alt=""
                     width="1100"
                     height="1100"
@@ -113,9 +112,7 @@ export default async function Home({
                   className="relative text-xl leading-10 hover:text-ui-fg-disabled"
                 >
                   <Image
-                    src={
-                      "https://eleos-medusa-uploads.s3.ap-south-1.amazonaws.com/assets/chain.avif"
-                    }
+                    src={"/assets/images/categories/chain.jpg"}
                     alt=""
                     width="225"
                     height="225"
@@ -128,20 +125,18 @@ export default async function Home({
               </li>
               <li>
                 <LocalizedClientLink
-                  href={`/categories/braclets`}
+                  href={`/categories/bracelets`}
                   className="relative text-xl leading-10 hover:text-ui-fg-disabled"
                 >
                   <Image
-                    src={
-                      "https://eleos-medusa-uploads.s3.ap-south-1.amazonaws.com/assets/bracelet.avif"
-                    }
+                    src={"/assets/images/categories/bracelet.jpg"}
                     alt=""
                     width="600"
                     height="799"
                     className="w-60 h-80 object-cover"
                   />
                   <p className="absolute bottom-1 left-1 text-2xl font-semibold text-white">
-                    Braclets
+                    Bracelets
                   </p>
                 </LocalizedClientLink>
               </li>
@@ -156,9 +151,20 @@ export default async function Home({
 
       <section>
         <div className="max-w-7xl mx-auto">
-          {featuredCollections.slice(0, 2).length > 0 && (
-            <FeaturedProducts
-              collections={featuredCollections.slice(0, 2)}
+          {product_categories.slice(0, 3).length > 0 && (
+            <FeaturedCategories
+              categories={product_categories.slice(0, 3)}
+              countryCode={countryCode}
+            />
+          )}
+        </div>
+      </section>
+
+      <section>
+        <div className="max-w-7xl mx-auto">
+          {product_categories.slice(3).length > 0 && (
+            <FeaturedCategories
+              categories={product_categories.slice(3)}
               countryCode={countryCode}
             />
           )}
