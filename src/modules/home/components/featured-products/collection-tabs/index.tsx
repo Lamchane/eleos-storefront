@@ -42,7 +42,9 @@ function CollectionWithProductRail({ collectionWithProducts, region }: Props) {
             {collectionWithProducts.map((collection) => (
               <Tabs.Content key={collection.id} value={collection.id}>
                 <ProductRail
-                  handle={collection.handle ?? ""}
+                  handle={
+                    collection.handle ? `/collections/${collection.handle}` : ""
+                  }
                   products={collection.products ?? []}
                   region={region}
                 />
