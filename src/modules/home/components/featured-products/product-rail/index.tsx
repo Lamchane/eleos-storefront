@@ -38,7 +38,7 @@ export default function ProductRail({
       </div>
       <div className="flex-1 pt-12 flex justify-center items-center">
         <Link
-          href={`/categories/${handle}`}
+          href={handle}
           className="border border-gray-400 hover:border-gray-600 px-6 py-2"
         >
           View all

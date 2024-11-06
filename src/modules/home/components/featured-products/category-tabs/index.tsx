@@ -45,7 +45,9 @@ function CategoryWithProductRail({ categoryWithProducts, region }: Props) {
             {categoryWithProducts.map((category) => (
               <Tabs.Content key={category.id} value={category.id}>
                 <ProductRail
-                  handle={category.handle ?? ""}
+                  handle={
+                    category.handle ? `/categories/${category.handle}` : ""
+                  }
                   products={category.products ?? []}
                   region={region}
                 />
