@@ -91,7 +91,7 @@ export default function ProductActions({
 
   // if product only has one variant, then select it
   useEffect(() => {
-    if (variants.length === 1 && variants[0].id) {
+    if (variants[0].id) {
       setOptions(variantRecord[variants[0].id])
     }
   }, [variants, variantRecord])

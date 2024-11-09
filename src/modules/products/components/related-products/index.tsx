@@ -36,9 +36,9 @@ export default async function RelatedProducts({
       params.collection_id = [product.collection_id]
     }
 
-    if (product.tags) {
-      params.tags = product.tags.map((t) => t.value)
-    }
+    // if (product.tags) {
+    //   params.tags = product.tags.map((t) => t.value)
+    // }
 
     params.is_giftcard = false
 
@@ -50,11 +50,11 @@ export default async function RelatedProducts({
   const productPreviews = await getProductsList({
     queryParams,
     countryCode,
-  }).then(({ response }) =>
-    response.products.filter(
+  }).then(({ response }) => {
+    return response.products.filter(
       (productPreview) => productPreview.id !== product.id
     )
-  )
+  })
 
   if (!productPreviews.length) {
     return null
