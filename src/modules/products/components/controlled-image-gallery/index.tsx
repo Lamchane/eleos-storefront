@@ -119,6 +119,7 @@ const ControlledImageGallery = ({ images }: ImageGalleryProps) => {
           </div>
 
           <Swiper
+            // @ts-expect-error
             initialSlide={secondSwiper?.activeIndex || 0}
             pagination={{
               clickable: true,
