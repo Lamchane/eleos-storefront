@@ -135,8 +135,6 @@ export async function FeaturedCategories({
     countryCode
   )
 
-  console.log(categoryWithProducts)
-
   return (
     <section className="py-12">
       <CategoryWithProductRail
