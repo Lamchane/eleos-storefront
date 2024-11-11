@@ -2,7 +2,7 @@ import React from "react"
 
 type Props = {}
 
-export default function Privacy({}: Props) {
+export default function About({}: Props) {
   return (
     <div className="max-w-7xl mx-auto space-y-4 py-12 px-4">
       <h2 className="font-semibold text-2xl  text-gray-800/90">About us</h2>
