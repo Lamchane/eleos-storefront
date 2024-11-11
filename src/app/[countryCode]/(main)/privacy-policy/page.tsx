@@ -137,6 +137,7 @@ export default function Privacy({}: Props) {
             Shared with our customer support team as needed.
           </span>
         </p>
+<<<<<<< Updated upstream
         <h2 className="font-semibold text-md text-gray-800/80">
           Sharing Personal Information
         </h2>
@@ -221,12 +222,85 @@ export default function Privacy({}: Props) {
           </ul>
         </div>
         <h2 className="font-semibold text-gray-800/80">Minors</h2>
+=======
+        <h2 className="font-semibold text-lg">Sharing Personal Information</h2>
+
+        <p className="text-gray-800/60">
+          We may share your personal information with select service providers
+          solely to provide our services effectively. This includes:
+        </p>
+
+        <ul className="list-disc list-inside">
+          <li>
+            <span className="font-semibold">Razorpay:&nbsp;</span>
+            <span className="text-gray-800/60">
+              Our payment gateway. Razorpay collects and processes payment
+              information independently. You can read Razorpay&apos;s privacy
+              policy for more details.
+            </span>
+          </li>
+          <li>
+            <span className="font-semibold">Shiprocket: &nbsp;</span>
+            <span className="text-gray-800/60">
+              Our shipping partner for handling product delivery.
+            </span>
+          </li>
+        </ul>
+
+        <h2 className="font-semibold text-lg">Behavioral Advertising</h2>
+
+        <p className="text-gray-800/60">
+          We may use your personal information to provide you with targeted
+          advertising and marketing updates. For instance:
+        </p>
+
+        <ul className="list-disc list-inside py-2">
+          <li>
+            <span className="font-semibold">Google Analytics: &nbsp; </span>
+            <span className="text-gray-800/60">
+              We use Google Analytics to better understand how visitors interact
+              with our Site. To learn more about Google&apos;s data practices or
+              to opt out, you can visit Google&apos;s privacy settings.
+            </span>
+          </li>
+          <li>
+            <span className="font-semibold">Advertising Partners:&nbsp;</span>
+            <span className="text-gray-800/60">
+              We may share non&ndash;identifiable data with advertising partners
+              to personalize offers.
+            </span>
+          </li>
+        </ul>
+        <p className="text-gray-800/60">
+          You can opt out of targeted advertising through the following
+          platforms:
+        </p>
+        <ul className="list-disc list-inside py-2 text-gray-800/60">
+          <li>Facebook Ad Preferences</li>
+          <li>Google Ad Settings</li>
+          <li>Bing Ads Settings</li>
+        </ul>
+
+        <h2 className="font-semibold">Using Personal Information</h2>
+        <p>
+          We use your personal information to provide our services, including:
+        </p>
+
+        <ul>
+          <li>Offering and selling products</li>
+          <li>Processing payments</li>
+          <li>Arranging and fulfilling shipments</li>
+          <li>Sending updates about new products and promotions</li>
+        </ul>
+        <h2 className="font-semibold">Minors</h2>
+>>>>>>> Stashed changes
         <p>
           Our Site is not intended for individuals under the age of 18. We do
           not knowingly collect information from children. If you believe a
           child has provided us with personal information, please contact us for
           its removal.
         </p>
+<<<<<<< Updated upstream
         <h2 className="font-semibold text-gray-800/80">Your Rights</h2>
         <h2 className="font-semibold text-gray-800/80">For Indian Residents</h2>
         <div>
@@ -234,6 +308,15 @@ export default function Privacy({}: Props) {
           <ul className="list-disc list-inside py-2">
             <li>Access the personal information we hold about you</li>
           </ul>
+=======
+        <h2 className="font-semibold">Your Rights</h2>
+        <h2 className="font-semibold">For Indian Residents</h2>
+        <p>As an Indian resident, you have the right to:</p>
+        <ul>
+          <li>Access the personal information we hold about you</li>
+        </ul>
+        <p>
+>>>>>>> Stashed changes
           To make any requests regarding your data, please contact us at
           contact@eleos.in.
         </div>

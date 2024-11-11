@@ -35,7 +35,7 @@ export default async function Home({
 
   return (
     <>
-      <CollectionSwiper collections={heroCollections} />
+      <CollectionSwiper collections={heroCollections.slice(0, 2)} />
 
       <section>
         <div className="max-w-7xl mx-auto">
@@ -146,7 +146,7 @@ export default async function Home({
       </section>
 
       <div>
-        <CollectionBanner collection={heroCollections[1]} />
+        <CollectionBanner collection={heroCollections[2]} />
       </div>
 
       <section>
