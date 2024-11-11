@@ -4,9 +4,11 @@ type Props = {}
 
 export default function Privacy({}: Props) {
   return (
-    <div className="max-w-7xl mx-auto space-y-4 py-12 px-4">
-      <h2 className="font-semibold text-2xl">Privacy Policy for Eleos</h2>
-      <h2 className="font-semibold text-lg">Introduction</h2>
+    <div className="max-w-7xl mx-auto space-y-4 py-12 px-4 text-gray-800/60">
+      <h2 className="font-semibold text-xl  text-gray-800/80">
+        Privacy Policy for Eleos
+      </h2>
+      <h2 className="font-semibold text-md text-gray-800/80">Introduction</h2>
       <div className="space-y-4">
         <p className="text-gray-800/60">
           This Privacy Policy describes how Eleos (&quot;we,&quot;
@@ -14,7 +16,7 @@ export default function Privacy({}: Props) {
           personal information when you visit our website, Eleos.co (the
           &quot;Site&quot;), or make a purchase from us.
         </p>
-        <h2 className="text-lg font-semibold">
+        <h2 className="text-md text-gray-800/80 font-semibold">
           Collecting Personal Information
         </h2>
         <p className="text-gray-800/60">
@@ -22,8 +24,10 @@ export default function Privacy({}: Props) {
           shopping experience and facilitate orders. This information is termed
           &quot;Personal Information&quot;.
         </p>
-        <h2 className="text-lg font-semibold">Device Information</h2>
-        <h2 className="text-lg font-semibold">
+        <h2 className="text-md text-gray-800/80 font-semibold">
+          Device Information
+        </h2>
+        <h2 className="text-md text-gray-800/80 font-semibold">
           Types of Information Collected:
         </h2>
         <ul className="list-disc list-inside text-gray-800/60">
@@ -35,7 +39,7 @@ export default function Privacy({}: Props) {
           <li>Search terms and Site interactions</li>
         </ul>
         <p>
-          <span className="font-semibold text-lg">
+          <span className="font-semibold text-md text-gray-800/80">
             Purpose of Collection:&nbsp;
           </span>
           <span className="text-gray-800/60">
@@ -44,7 +48,7 @@ export default function Privacy({}: Props) {
           </span>
         </p>
         <p>
-          <span className="font-semibold text-lg">
+          <span className="font-semibold text-md text-gray-800/80">
             Source of Collection: &nbsp;
           </span>
           <span className="text-gray-800/60">
@@ -53,7 +57,7 @@ export default function Privacy({}: Props) {
           </span>
         </p>
         <p>
-          <span className="font-semibold  text-lg">
+          <span className="font-semibold  text-md text-gray-800/80">
             Disclosure for Business Purposes: &nbsp;
           </span>
           <span className="text-gray-800/60">
@@ -61,9 +65,11 @@ export default function Privacy({}: Props) {
           </span>
         </p>
 
-        <h2 className="py-2 font-semibold text-lg">Order Information</h2>
+        <h2 className="py-2 font-semibold text-md text-gray-800/80">
+          Order Information
+        </h2>
 
-        <h2 className="font-semibold text-lg">
+        <h2 className="font-semibold text-md text-gray-800/80">
           Types of Information Collected:
         </h2>
         <ul className="list-disc list-inside text-gray-800/60">
@@ -73,7 +79,7 @@ export default function Privacy({}: Props) {
           <li>Phone number</li>
         </ul>
         <p>
-          <span className="font-semibold text-lg">
+          <span className="font-semibold text-md text-gray-800/80">
             Purpose of Collection: &nbsp;
           </span>
           <span className="text-gray-800/60">
@@ -82,7 +88,7 @@ export default function Privacy({}: Props) {
           </span>
         </p>
         <p>
-          <span className="font-semibold text-lg">
+          <span className="font-semibold text-md text-gray-800/80">
             Source of Collection: &nbsp;
           </span>
           <span className="text-gray-800/60">
@@ -90,7 +96,7 @@ export default function Privacy({}: Props) {
           </span>
         </p>
         <p>
-          <span className="font-semibold text-lg">
+          <span className="font-semibold text-md text-gray-800/80">
             Disclosure for Business Purposes: &nbsp;
           </span>
           <span className="text-gray-800/60">
@@ -98,9 +104,11 @@ export default function Privacy({}: Props) {
             shipping logistics.
           </span>
         </p>
-        <h2 className="font-semibold text-lg">Customer Support Information</h2>
+        <h2 className="font-semibold text-md text-gray-800/80">
+          Customer Support Information
+        </h2>
         <p>
-          <span className="font-semibold text-lg">
+          <span className="font-semibold text-md text-gray-800/80">
             Types of Information Collected: &nbsp;
           </span>
           <span className="text-gray-800/60">
@@ -108,7 +116,7 @@ export default function Privacy({}: Props) {
           </span>
         </p>
         <p>
-          <span className="font-semibold text-lg">
+          <span className="font-semibold text-md text-gray-800/80">
             Purpose of Collection:&nbsp;
           </span>
           <span className="text-gray-800/60">
@@ -116,21 +124,23 @@ export default function Privacy({}: Props) {
           </span>
         </p>
         <p>
-          <span className="font-semibold text-lg">
+          <span className="font-semibold text-md text-gray-800/80">
             Source of Collection:&nbsp;
           </span>
           <span className="text-gray-800/60">Directly collected from you.</span>
         </p>
         <p>
-          <span className="font-semibold text-lg">
+          <span className="font-semibold text-md text-gray-800/80">
             Disclosure for Business Purposes:&nbsp;
           </span>
           <span className="text-gray-800/60">
             Shared with our customer support team as needed.
           </span>
         </p>
-        <h2 className="font-semibold text-lg">Sharing Personal Information</h2>
-        <p>
+        <h2 className="font-semibold text-md text-gray-800/80">
+          Sharing Personal Information
+        </h2>
+        <div>
           <span className="text-gray-800/60">
             We may share your personal information with select service providers
             solely to provide our services effectively. This includes:
@@ -138,7 +148,9 @@ export default function Privacy({}: Props) {
 
           <ul className="list-disc list-inside">
             <li>
-              <span className="font-semibold">Razorpay:&nbsp;</span>
+              <span className="font-semibold text-gray-800/80">
+                Razorpay:&nbsp;
+              </span>
               <span className="text-gray-800/60">
                 Our payment gateway. Razorpay collects and processes payment
                 information independently. You can read Razorpay&apos;s privacy
@@ -146,15 +158,19 @@ export default function Privacy({}: Props) {
               </span>
             </li>
             <li>
-              <span className="font-semibold">Shiprocket: &nbsp;</span>
+              <span className="font-semibold text-gray-800/80">
+                Shiprocket: &nbsp;
+              </span>
               <span className="text-gray-800/60">
                 Our shipping partner for handling product delivery.
               </span>
             </li>
           </ul>
-        </p>
-        <h2 className="font-semibold text-lg">Behavioral Advertising</h2>
-        <p>
+        </div>
+        <h2 className="font-semibold text-md text-gray-800/80">
+          Behavioral Advertising
+        </h2>
+        <div>
           <span className="text-gray-800/60">
             We may use your personal information to provide you with targeted
             advertising and marketing updates. For instance:
@@ -162,7 +178,9 @@ export default function Privacy({}: Props) {
 
           <ul className="list-disc list-inside py-2">
             <li>
-              <span className="font-semibold">Google Analytics: &nbsp; </span>
+              <span className="font-semibold text-gray-800/80">
+                Google Analytics: &nbsp;
+              </span>
               <span className="text-gray-800/60">
                 We use Google Analytics to better understand how visitors
                 interact with our Site. To learn more about Google&apos;s data
@@ -171,7 +189,9 @@ export default function Privacy({}: Props) {
               </span>
             </li>
             <li>
-              <span className="font-semibold">Advertising Partners:&nbsp;</span>
+              <span className="font-semibold text-gray-800/80">
+                Advertising Partners:&nbsp;
+              </span>
               <span className="text-gray-800/60">
                 We may share non&ndash;identifiable data with advertising
                 partners to personalize offers.
@@ -187,72 +207,84 @@ export default function Privacy({}: Props) {
             <li>Google Ad Settings</li>
             <li>Bing Ads Settings</li>
           </ul>
-        </p>
-        <h2 className="font-semibold">Using Personal Information</h2>
-        <p>
+        </div>
+        <h2 className="font-semibold text-gray-800/80">
+          Using Personal Information
+        </h2>
+        <div>
           We use your personal information to provide our services, including:
-          <ul>
+          <ul className="list-disc list-inside py-2">
             <li>Offering and selling products</li>
             <li>Processing payments</li>
             <li>Arranging and fulfilling shipments</li>
             <li>Sending updates about new products and promotions</li>
           </ul>
-        </p>
-        <h2 className="font-semibold">Minors</h2>
+        </div>
+        <h2 className="font-semibold text-gray-800/80">Minors</h2>
         <p>
           Our Site is not intended for individuals under the age of 18. We do
           not knowingly collect information from children. If you believe a
           child has provided us with personal information, please contact us for
           its removal.
         </p>
-        <h2 className="font-semibold">Your Rights</h2>
-        <h2 className="font-semibold">For Indian Residents</h2>
-        <p>
+        <h2 className="font-semibold text-gray-800/80">Your Rights</h2>
+        <h2 className="font-semibold text-gray-800/80">For Indian Residents</h2>
+        <div>
           As an Indian resident, you have the right to:
-          <ul>
+          <ul className="list-disc list-inside py-2">
             <li>Access the personal information we hold about you</li>
           </ul>
           To make any requests regarding your data, please contact us at
           contact@eleos.in.
-        </p>
-        <h2 className="font-semibold">Cookies</h2>
+        </div>
+        <h2 className="font-semibold text-gray-800/80">Cookies</h2>
         <p>
           We use cookies to enhance your experience on our Site. Cookies are
           small files stored on your device and help us customize your browsing
           experience.
         </p>
-        <h2 className="font-semibold">Types of Cookies Used:</h2>
-        <ul>
+        <h2 className="font-semibold text-gray-800/80">
+          Types of Cookies Used:
+        </h2>
+        <ul className="list-disc list-inside py-2">
           <li>
-            <span className="font-semibold">Essential Cookies:</span>Required
-            for the Site to function properly.
+            <span className="font-semibold text-gray-800/80">
+              Essential Cookies:
+            </span>
+            Required for the Site to function properly.
           </li>
           <li>
-            <span className="font-semibold">Analytics Cookies:</span>Help us
-            analyze how visitors use the Site.
+            <span className="font-semibold text-gray-800/80">
+              Analytics Cookies:
+            </span>
+            Help us analyze how visitors use the Site.
           </li>
           <li>
-            <span className="font-semibold">Advertising Cookies:</span>Support
-            personalized advertising.
+            <span className="font-semibold text-gray-800/80">
+              Advertising Cookies:
+            </span>
+            Support personalized advertising.
           </li>
         </ul>
         <p>
           You can manage cookies through your browser settings. Note that
           disabling cookies may affect certain functionalities of the Site.
         </p>
-        <h2>Changes to This Privacy Policy:</h2>
+        <h2 className="font-semibold text-gray-800/80">
+          Changes to This Privacy Policy:
+        </h2>
         <p>
           We may periodically update this Privacy Policy to reflect changes in
           our practices. Any significant updates will be communicated via the
           Site.
         </p>
-        <h2>Contact Us</h2>
+        <h2 className="font-semibold text-gray-800/80">Contact Us</h2>
         <p>
           If you have questions or concerns about this Privacy Policy, please
           reach out to us at:
         </p>
       </div>
-      <h2>Email:</h2>
+      <h2 className="font-semibold text-gray-800/80">Email:</h2>
       <p>contact@eleos.in</p>
     </div>
   )
