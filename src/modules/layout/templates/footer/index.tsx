@@ -123,10 +123,47 @@ export default async function Footer() {
                 </ul>
               </div>
             )}
+
             <div className="flex flex-col gap-y-2">
               <span className="txt-small-plus txt-ui-fg-base">
                 Get To Know Us
               </span>
+              <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
+                <li>
+                  <a
+                    href="https://www.eleos.in/in/about"
+                    // target="_blank"
+                    // rel="noreferrer"
+                    className="hover:text-ui-fg-base"
+                  >
+                    AboutUs
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.eleos.in/in/shipping-policy"
+                    // target="_blank"
+                    // rel="noreferrer"
+                    className="hover:text-ui-fg-base"
+                  >
+                    Shipping Policy
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.eleos.in/in/return-exchange-policy"
+                    // target="_blank"
+                    // rel="noreferrer"
+                    className="hover:text-ui-fg-base"
+                  >
+                    Return policy
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div className="flex flex-col gap-y-2">
+              <span className="txt-small-plus txt-ui-fg-base">Information</span>
               <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
                 <li>
                   <a
@@ -140,17 +177,17 @@ export default async function Footer() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="https://www.eleos.in/in/privacy-policy"
                     // target="_blank"
                     // rel="noreferrer"
                     className="hover:text-ui-fg-base"
                   >
-                    FAQ
+                    Privacy Policy
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="https://www.eleos.in/in/terms-of-service"
                     // target="_blank"
                     // rel="noreferrer"
                     className="hover:text-ui-fg-base"
@@ -160,6 +197,7 @@ export default async function Footer() {
                 </li>
               </ul>
             </div>
+
             <div>
               <span className="txt-small-plus txt-ui-fg-base">
                 Customer Care
