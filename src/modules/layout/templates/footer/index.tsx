@@ -38,8 +38,8 @@ export default async function Footer() {
               />
             </LocalizedClientLink>
           </div>
-          <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
-            {/* {product_categories && product_categories?.length > 0 && (
+          <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-4">
+            {product_categories && product_categories?.length > 0 && (
               <div className="flex flex-col gap-y-2">
                 <span className="txt-small-plus txt-ui-fg-base">
                   Categories
@@ -75,7 +75,7 @@ export default async function Footer() {
                         >
                           {c.name}
                         </LocalizedClientLink>
-                        {children && (
+                        {/* {children && (
                           <ul className="grid grid-cols-1 ml-3 gap-2">
                             {children &&
                               children.map((child) => (
@@ -90,14 +90,15 @@ export default async function Footer() {
                                 </li>
                               ))}
                           </ul>
-                        )}
+                        )} */}
                       </li>
                     )
                   })}
                 </ul>
               </div>
-            )} */}
-            {featuedCollections && featuedCollections.length > 0 && (
+            )}
+
+            {/* {featuedCollections && featuedCollections.length > 0 && (
               <div className="flex flex-col gap-y-2">
                 <span className="txt-small-plus txt-ui-fg-base">
                   Collections
@@ -122,7 +123,7 @@ export default async function Footer() {
                   ))}
                 </ul>
               </div>
-            )}
+            )} */}
 
             <div className="flex flex-col gap-y-2">
               <span className="txt-small-plus txt-ui-fg-base">
@@ -130,34 +131,28 @@ export default async function Footer() {
               </span>
               <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
                 <li>
-                  <a
-                    href="https://www.eleos.in/in/about"
-                    // target="_blank"
-                    // rel="noreferrer"
+                  <LocalizedClientLink
                     className="hover:text-ui-fg-base"
+                    href={`/about`}
                   >
                     AboutUs
-                  </a>
+                  </LocalizedClientLink>
                 </li>
                 <li>
-                  <a
-                    href="https://www.eleos.in/in/shipping-policy"
-                    // target="_blank"
-                    // rel="noreferrer"
+                  <LocalizedClientLink
                     className="hover:text-ui-fg-base"
+                    href="/shipping-policy"
                   >
-                    Shipping Policy
-                  </a>
+                    Shipping
+                  </LocalizedClientLink>
                 </li>
                 <li>
-                  <a
-                    href="https://www.eleos.in/in/return-exchange-policy"
-                    // target="_blank"
-                    // rel="noreferrer"
+                  <LocalizedClientLink
                     className="hover:text-ui-fg-base"
+                    href="/return-exchange-policy"
                   >
-                    Return policy
-                  </a>
+                    Return & Exchange
+                  </LocalizedClientLink>
                 </li>
               </ul>
             </div>
@@ -176,33 +171,29 @@ export default async function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://www.eleos.in/in/privacy-policy"
-                    // target="_blank"
-                    // rel="noreferrer"
+                  <LocalizedClientLink
                     className="hover:text-ui-fg-base"
+                    href="/privacy-policy"
                   >
                     Privacy Policy
-                  </a>
+                  </LocalizedClientLink>
                 </li>
                 <li>
-                  <a
-                    href="https://www.eleos.in/in/terms-of-service"
-                    // target="_blank"
-                    // rel="noreferrer"
+                  <LocalizedClientLink
                     className="hover:text-ui-fg-base"
+                    href="/terms-of-service"
                   >
                     Terms & Conditions
-                  </a>
+                  </LocalizedClientLink>
                 </li>
               </ul>
             </div>
 
-            <div>
+            <div className="flex flex-col gap-y-2">
               <span className="txt-small-plus txt-ui-fg-base">
                 Customer Care
               </span>
-              <ul>
+              <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
                 <li>Timings: 10 AM - 7 PM (Mon - Sat)</li>
                 <li>Whatsapp : +91 1234567890</li>
                 <li>Instagram: @eleos</li>
