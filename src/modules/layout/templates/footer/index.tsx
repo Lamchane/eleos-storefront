@@ -204,7 +204,7 @@ export default async function Footer() {
               </span>
               <ul>
                 <li>Timings: 10 AM - 7 PM (Mon - Sat)</li>
-                <li>Whatsapp : +91 1234567890</li>
+                {/* <li>Whatsapp : +91 1234567890</li> */}
                 <li>Instagram: @eleos</li>
               </ul>
             </div>
