@@ -23,7 +23,10 @@ const PaymentDetails = ({ order }: PaymentDetailsProps) => {
               <Text className="txt-medium-plus text-ui-fg-base mb-1">
                 Payment method
               </Text>
-              <Text className="txt-medium text-ui-fg-subtle" data-testid="payment-method">
+              <Text
+                className="txt-medium text-ui-fg-subtle"
+                data-testid="payment-method"
+              >
                 {paymentInfoMap[payment.provider_id].title}
               </Text>
             </div>
@@ -36,13 +39,19 @@ const PaymentDetails = ({ order }: PaymentDetailsProps) => {
                   {paymentInfoMap[payment.provider_id].icon}
                 </Container>
                 <Text data-testid="payment-amount">
-                  {payment.provider_id === "stripe" && payment.data.card_last4
-                    ? `**** **** **** ${payment.data.card_last4}`
-                    : `${formatAmount({
-                        amount: payment.amount,
-                        region: order.region,
-                        includeTaxes: false,
-                      })} paid at ${new Date(payment.created_at).toString()}`}
+                  {payment.provider_id === "razorpay" &&
+                    `${formatAmount({
+                      amount: payment.amount,
+                      region: order.region,
+                      includeTaxes: false,
+                    })} paid at ${new Date(payment.created_at).toString()}`}
+
+                  {payment.provider_id === "manual" &&
+                    `${formatAmount({
+                      amount: payment.amount,
+                      region: order.region,
+                      includeTaxes: false,
+                    })} To Be Paid`}
                 </Text>
               </div>
             </div>

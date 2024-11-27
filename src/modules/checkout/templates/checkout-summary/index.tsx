@@ -2,10 +2,10 @@ import { Heading } from "@medusajs/ui"
 
 import ItemsPreviewTemplate from "@modules/cart/templates/preview"
 import DiscountCode from "@modules/checkout/components/discount-code"
-import CartTotals from "@modules/common/components/cart-totals"
 import Divider from "@modules/common/components/divider"
 import { cookies } from "next/headers"
 import { getCart } from "@lib/data"
+import CheckoutTotals from "@modules/common/components/checkout-totals"
 
 const CheckoutSummary = async () => {
   const cartId = cookies().get("_medusa_cart_id")?.value
@@ -31,7 +31,7 @@ const CheckoutSummary = async () => {
           In your Cart
         </Heading>
         <Divider className="my-6" />
-        <CartTotals data={cart} />
+        <CheckoutTotals data={cart} />
         <ItemsPreviewTemplate region={cart?.region} items={cart?.items} />
         <div className="my-6">
           <DiscountCode cart={cart} />

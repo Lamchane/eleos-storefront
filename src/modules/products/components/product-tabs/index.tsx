@@ -28,10 +28,10 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
       label: "Shipping Information",
       component: <ShippingInfoTab />,
     },
-    {
-      label: "Returns & Exchange",
-      component: <ReturnInfoTab />,
-    },
+    // {
+    //   label: "Returns & Exchange",
+    //   component: <ReturnInfoTab />,
+    // },
   ]
 
   return (
