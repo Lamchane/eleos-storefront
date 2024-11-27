@@ -6,6 +6,7 @@ import {
   addShippingMethod,
   completeCart,
   deleteDiscount,
+  listCartShippingMethods,
   setPaymentSession,
   updateCart,
 } from "@lib/data"
@@ -147,13 +148,14 @@ export async function setAddresses(currentState: unknown, formData: FormData) {
 
   try {
     await updateCart(cartId, data)
+
     revalidateTag("cart")
   } catch (error: any) {
     return error.toString()
   }
 
   redirect(
-    `/${formData.get("shipping_address.country_code")}/checkout?step=delivery`
+    `/${formData.get("shipping_address.country_code")}/checkout?step=payment`
   )
 }
 
@@ -177,6 +179,45 @@ export async function setPaymentMethod(providerId: string) {
 
   try {
     const cart = await setPaymentSession({ cartId, providerId })
+
+    if (providerId === "manual") {
+      const availableShippingMethods = await listCartShippingMethods(
+        cartId
+      ).then((methods) =>
+        methods?.filter((m) => !m.is_return && m.metadata?.cod === "true")
+      )
+
+      if (
+        !availableShippingMethods ||
+        availableShippingMethods.length < 1 ||
+        availableShippingMethods[0].id === undefined
+      ) {
+        throw "No available shipping methods"
+      }
+
+      await addShippingMethod({
+        cartId,
+        shippingMethodId: availableShippingMethods[0].id,
+      })
+    } else {
+      const availableShippingMethods = await listCartShippingMethods(
+        cartId
+      ).then((methods) => methods?.filter((m) => !m.is_return))
+
+      if (
+        !availableShippingMethods ||
+        availableShippingMethods.length < 1 ||
+        availableShippingMethods[0].id === undefined
+      ) {
+        throw "No available shipping methods"
+      }
+
+      await addShippingMethod({
+        cartId,
+        shippingMethodId: availableShippingMethods[0].id,
+      })
+    }
+
     revalidateTag("cart")
     return cart
   } catch (error: any) {
