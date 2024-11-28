@@ -13,6 +13,7 @@ import {
 import { GiftCard, StorePostCartsCartReq } from "@medusajs/medusa"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
+import { PricedShippingOption } from "@medusajs/medusa/dist/types/pricing"
 
 export async function cartUpdate(data: StorePostCartsCartReq) {
   const cartId = cookies().get("_medusa_cart_id")?.value
@@ -178,47 +179,41 @@ export async function setPaymentMethod(providerId: string) {
   if (!cartId) throw new Error("No cartId cookie found")
 
   try {
-    const cart = await setPaymentSession({ cartId, providerId })
+    let cart = await setPaymentSession({ cartId, providerId })
 
     console.log("providerID:", providerId)
 
-    if (providerId === "manual") {
-      const availableShippingMethods = await listCartShippingMethods(
-        cartId
-      ).then((methods) =>
-        methods?.filter((m) => !m.is_return && m.metadata?.cod === "true")
-      )
+    const availableShippingMethods = await listCartShippingMethods(cartId).then(
+      (methods) => methods
+    )
 
-      if (
-        !availableShippingMethods ||
-        availableShippingMethods.length < 1 ||
-        availableShippingMethods[0].id === undefined
-      ) {
-        throw "No available shipping methods"
-      }
-
-      await addShippingMethod({
-        cartId,
-        shippingMethodId: availableShippingMethods[0].id,
-      })
-    } else {
-      const availableShippingMethods = await listCartShippingMethods(
-        cartId
-      ).then((methods) => methods?.filter((m) => !m.is_return))
-
-      if (
-        !availableShippingMethods ||
-        availableShippingMethods.length < 1 ||
-        availableShippingMethods[0].id === undefined
-      ) {
-        throw "No available shipping methods"
-      }
-
-      await addShippingMethod({
-        cartId,
-        shippingMethodId: availableShippingMethods[0].id,
-      })
+    if (
+      !availableShippingMethods ||
+      availableShippingMethods.length < 1 ||
+      availableShippingMethods[0].id === undefined
+    ) {
+      revalidateTag("cart")
+      return cart
     }
+
+    let applicableMethods: PricedShippingOption[] = []
+
+    if (providerId === "manual") {
+      applicableMethods = availableShippingMethods.filter(
+        (m) => !m.is_return && m.metadata?.cod === "true"
+      )
+    } else {
+      applicableMethods = availableShippingMethods.filter(
+        (m) => !m.is_return && m.metadata?.cod !== "true"
+      )
+    }
+
+    console.log("shipping: ", applicableMethods)
+
+    cart = await addShippingMethod({
+      cartId,
+      shippingMethodId: applicableMethods[0].id as string,
+    })
 
     revalidateTag("cart")
     return cart

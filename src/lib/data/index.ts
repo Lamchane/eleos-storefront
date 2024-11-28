@@ -175,10 +175,6 @@ export async function setPaymentSession({
 }) {
   const headers = getMedusaHeaders(["cart"])
 
-  if (providerId === "manual") {
-    medusaClient.carts.client.request("POST", "", {})
-  }
-
   return medusaClient.carts
     .setPaymentSession(cartId, { provider_id: providerId }, headers)
     .then(({ cart }) => cart)
