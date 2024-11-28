@@ -195,7 +195,7 @@ export default async function Footer() {
               </span>
               <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
                 <li>Timings: 10 AM - 7 PM (Mon - Sat)</li>
-                <li>Whatsapp : +91 1234567890</li>
+                {/* <li>Whatsapp : +91 1234567890</li> */}
                 <li>Instagram: @eleos</li>
               </ul>
             </div>

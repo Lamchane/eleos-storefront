@@ -26,7 +26,7 @@ export default function Return({}: Props) {
             <li>Opt for store credit equal to the billed amount.</li>
           </ul>
         </div>
-        <div>
+        {/* <div>
           <span className="font-semibold text-gray-800/70 text-md">
             2. Shipping Within India:
           </span>
@@ -40,8 +40,8 @@ export default function Return({}: Props) {
               300.
             </li>
           </ul>
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <span className="font-semibold text-gray-800/70 text-md">
             3. Delivery Times:
           </span>
@@ -49,10 +49,10 @@ export default function Return({}: Props) {
             <li>Standard Shipping: 5 &ndash; 7 Business Days.</li>
             <li>Express Shipping: 2 &ndash; 4 Business Days.</li>
           </ul>
-        </div>
+        </div> */}
         <p>
           <span className="font-semibold text-gray-800/70 text-md">
-            4. Tracking Your Parcel:&nbsp;
+            2. Tracking Your Parcel:&nbsp;
           </span>
           Orders are prepared and shipped within 24 hours of placement. Tracking
           details are sent automatically via email. If you do not receive
@@ -61,7 +61,7 @@ export default function Return({}: Props) {
         </p>
         <p>
           <span className="font-semibold text-gray-800/70 text-md">
-            5.Order Modifications: &nbsp;
+            3.Order Modifications: &nbsp;
           </span>
           To cancel or modify orders, email us at contact@eleos.in as soon as
           possible. We will do our best to accommodate changes however,
@@ -69,14 +69,14 @@ export default function Return({}: Props) {
         </p>
         <p>
           <span className="font-semibold text-gray-800/70 text-md">
-            6. Duties & Taxes:&nbsp;
+            4. Duties & Taxes:&nbsp;
           </span>
           All shipments within India include taxes and duties, with no
           additional charges due at delivery.
         </p>
         <p>
           <span className="font-semibold text-gray-800/70 text-md">
-            7. Terms & Conditions Processing Times:&nbsp;
+            5. Terms & Conditions Processing Times:&nbsp;
           </span>
           Orders are processed within 1 business day, excluding Sundays and
           national holidays. A confirmation email with tracking information is
@@ -84,7 +84,7 @@ export default function Return({}: Props) {
         </p>
         <div>
           <span className="font-semibold text-gray-800/70 text-md">
-            8. National Holidays Observed:
+            6. National Holidays Observed:
           </span>
           <ul className="py-2 list-disc list-inside">
             <li>New Year&apos;s Day</li>
@@ -105,7 +105,7 @@ export default function Return({}: Props) {
         </p>
         <p>
           <span className="font-semibold text-gray-800/70 text-md">
-            10. Fulfillment Issues:&nbsp;
+            7. Fulfillment Issues:&nbsp;
           </span>
           If you encounter any issues with fulfillment, please contact us within
           7 days of placing the order at
@@ -113,7 +113,7 @@ export default function Return({}: Props) {
         </p>
         <p>
           <span className="font-semibold text-gray-800/70 text-md">
-            11. Lost Packages: &nbsp;
+            8. Lost Packages: &nbsp;
           </span>
           Once a package is marked as delivered by the courier, Eleos is not
           responsible for lost, damaged, or stolen items. All risks are assumed
@@ -121,7 +121,7 @@ export default function Return({}: Props) {
         </p>
         <p>
           <span className="font-semibold text-gray-800/70 text-md">
-            12. Delivery Attempts: &nbsp;
+            9. Delivery Attempts: &nbsp;
           </span>
           Delivery attempts will be made twice. If you cannot receive the
           package on the second attempt, the order will be returned to Eleos,
@@ -130,7 +130,7 @@ export default function Return({}: Props) {
         </p>
         <p>
           <span className="font-semibold text-gray-800/70 text-md">
-            13. Delivery Delays: &nbsp;
+            10. Delivery Delays: &nbsp;
           </span>
           Any delays caused by the courier are their responsibility. While Eleos
           will assist in expediting delivery if possible, we cannot be held
@@ -138,7 +138,7 @@ export default function Return({}: Props) {
         </p>
         <p>
           <span className="font-semibold text-gray-800/70 text-md">
-            14. Damaged Packages:&nbsp;
+            11. Damaged Packages:&nbsp;
           </span>
           If your package arrives damaged, please contact us at
           <Link href={"#"}> contact@eleos.in</Link>. We will work with you to
@@ -146,14 +146,14 @@ export default function Return({}: Props) {
         </p>
         <p>
           <span className="font-semibold text-gray-800/70 text-md">
-            15. Further Inquiries:&nbsp;
+            12. Further Inquiries:&nbsp;
           </span>
           For additional questions or clarifications, email us at
           <Link href={"#"}> contact@eleos.in</Link>.
         </p>
         <p>
           <span className="font-semibold text-gray-800/70 text-md">
-            16. Customer Service:&nbsp;
+            13. Customer Service:&nbsp;
           </span>
           Hours Monday &ndash; Saturday | 11:00 AM &ndash; 6:00 PM IST
         </p>
