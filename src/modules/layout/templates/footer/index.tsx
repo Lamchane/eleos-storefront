@@ -23,7 +23,7 @@ export default async function Footer() {
   return (
     <footer className="border-t border-ui-border-base w-full">
       <div className="content-container flex flex-col w-full">
-        <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-40">
+        <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-20 sm:py-40">
           <div>
             <LocalizedClientLink
               href="/"
@@ -34,7 +34,14 @@ export default async function Footer() {
                 alt="Eleos Store"
                 width={512}
                 height={512}
-                className="w-40 aspect-square"
+                className="hidden sm:block w-40 aspect-square"
+              />
+              <Image
+                src={"/assets/images/logo-full.png"}
+                alt="Eleos Store"
+                width={512}
+                height={512}
+                className="sm:hidden w-60"
               />
             </LocalizedClientLink>
           </div>

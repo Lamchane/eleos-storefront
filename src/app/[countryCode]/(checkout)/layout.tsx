@@ -1,6 +1,7 @@
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import ChevronDown from "@modules/common/icons/chevron-down"
 import MedusaCTA from "@modules/layout/components/medusa-cta"
+import Image from "next/image"
 
 export default function CheckoutLayout({
   children,
@@ -29,7 +30,13 @@ export default function CheckoutLayout({
             className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
             data-testid="store-link"
           >
-            {process.env.NEXT_PUBLIC_SHOP_NAME}
+            <Image
+              src={"/assets/images/logo-full.png"}
+              width={2166}
+              height={383}
+              alt="Eleos"
+              className="w-24 sm:w-40"
+            />
           </LocalizedClientLink>
           <div className="flex-1 basis-0" />
         </nav>
