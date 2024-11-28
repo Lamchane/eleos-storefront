@@ -180,6 +180,8 @@ export async function setPaymentMethod(providerId: string) {
   try {
     const cart = await setPaymentSession({ cartId, providerId })
 
+    console.log("providerID:", providerId)
+
     if (providerId === "manual") {
       const availableShippingMethods = await listCartShippingMethods(
         cartId
