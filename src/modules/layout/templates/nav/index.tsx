@@ -10,6 +10,7 @@ import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
 import { BsHeart, BsPerson, BsSearch } from "react-icons/bs"
 import { ProductCategory } from "@medusajs/medusa"
+import Image from "next/image"
 
 export default async function Nav() {
   const regions = await listRegions().then((regions) => regions)
@@ -38,7 +39,13 @@ export default async function Nav() {
               className="text-3xl hover:text-ui-fg-base uppercase"
               data-testid="nav-store-link"
             >
-              ELEOS
+              <Image
+                src={"/assets/images/logo-full.png"}
+                width={2166}
+                height={383}
+                alt="Eleos"
+                className="w-24 sm:w-40"
+              />
             </LocalizedClientLink>
           </div>
 

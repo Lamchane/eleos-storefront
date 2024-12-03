@@ -252,6 +252,8 @@ const Payment = ({
                   <Text>
                     {cart.payment_session.provider_id === "stripe" && cardBrand
                       ? cardBrand
+                      : cart.payment_session.provider_id === "manual"
+                      ? "to be paid on delivery"
                       : "Another step will appear"}
                   </Text>
                 </div>
