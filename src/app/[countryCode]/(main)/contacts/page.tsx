@@ -1,6 +1,12 @@
 import Link from "next/link"
 import React from "react"
-import { BsEnvelope, BsInstagram, BsPhone } from "react-icons/bs"
+import {
+  BsEnvelope,
+  BsHouseCheck,
+  BsHouseExclamation,
+  BsInstagram,
+  BsPhone,
+} from "react-icons/bs"
 
 type Props = {}
 
@@ -49,6 +55,18 @@ export default function Contacts({}: Props) {
               </div>
               <div className="text-sm md:text-base">
                 Phone number &ndash;&nbsp; +91 6000205304
+              </div>
+            </div>
+
+            <div className="py-2 flex space-x-2 md:text-center">
+              <div className="flex items-center justify-center">
+                <BsHouseCheck size={15} />
+              </div>
+              <div className="text-sm md:text-base">
+                Address &ndash;&nbsp;
+                <Link href={"contact@eleos.in"} target="_new">
+                  Mukhya path, near Kalimandir, Assam, Guwahati, 781005
+                </Link>
               </div>
             </div>
           </div>
