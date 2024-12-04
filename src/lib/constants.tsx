@@ -27,11 +27,11 @@ export const paymentInfoMap: Record<
     icon: <PayPal />,
   },
   razorpay: {
-    title: "Razorpay",
+    title: "Prepaid   (FREE)",
     icon: <CreditCard />,
   },
   manual: {
-    title: "Cash On Delivery",
+    title: "COD   (₹99)",
     icon: <Cash />,
   },
   // Add more payment providers here

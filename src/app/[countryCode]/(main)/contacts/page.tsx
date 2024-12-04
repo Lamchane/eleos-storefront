@@ -18,11 +18,13 @@ export default function Contacts({}: Props) {
           <h2 className="font-semibold text-xl  text-gray-800/80">
             Reach Us Via
           </h2>
-          <p className="py-2 font-semibold text-md text-gray-800/60">
+
+          <p className="mt-6 font-semibold text-md text-gray-800/60">
             Monday&ndash;Saturday between 12PM to 9PM
           </p>
-          <div>
-            <div className="py-2 flex space-x-2 text-center">
+
+          <div className="mt-6 space-y-4">
+            <div className="flex space-x-2 text-center">
               <div className="flex items-center justify-center">
                 <BsInstagram size={15} />
               </div>
@@ -37,28 +39,29 @@ export default function Contacts({}: Props) {
               </div>
             </div>
 
-            <div className="py-2 flex space-x-2 text-center">
+            <div className="flex space-x-2 text-center">
               <div className="flex items-center justify-center">
                 <BsEnvelope size={15} />
               </div>
               <div className="text-sm md:text-base">
                 Email &ndash;&nbsp;
-                <Link href={"contact@eleos.in"} target="_new">
+                <Link href={"mailto:contact@eleos.in"} target="_new">
                   contact@eleos.in (Lead time: 1-2 days)
                 </Link>
               </div>
             </div>
 
-            <div className="py-2 flex space-x-2 text-center">
+            <div className="flex space-x-2 text-center">
               <div className="flex items-center justify-center">
                 <BsPhone size={15} />
               </div>
               <div className="text-sm md:text-base">
-                Phone number &ndash;&nbsp; +91 6000205304
+                Phone number &ndash;&nbsp;{" "}
+                <a href="tel:+916000205304">+91 6000205304</a>
               </div>
             </div>
 
-            <div className="py-2 flex space-x-2 md:text-center">
+            <div className="flex space-x-2 md:text-center">
               <div className="flex items-center justify-center">
                 <BsHouseCheck size={15} />
               </div>
@@ -72,8 +75,19 @@ export default function Contacts({}: Props) {
           </div>
         </div>
 
+        <div className="p-4">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.058813918079!2d91.77455417556939!3d26.162213977102425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a590dc07c938f%3A0x562d1a267e7ab66e!2sMukhya%20Path%2C%20Tarun%20Nagar%2C%20Guwahati%2C%20Assam%20781006!5e0!3m2!1sen!2sin!4v1733321094785!5m2!1sen!2sin"
+            style={{ border: 0 }}
+            allowFullScreen={false}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="w-full h-full"
+          ></iframe>
+        </div>
+
         {/* form start here */}
-        <div className="p-2">
+        {/* <div className="p-2">
           <h2 className="font-semibold text-xl  text-gray-800/80">
             Drop Us a Line
           </h2>
@@ -81,7 +95,7 @@ export default function Contacts({}: Props) {
           <form
             action="https://formsubmit.co/connect@eleos.in"
             method="POST"
-            className="py-6"
+            className="mt-6"
           >
             <div>
               <input
@@ -147,7 +161,7 @@ export default function Contacts({}: Props) {
               Send
             </button>
           </form>
-        </div>
+        </div> */}
       </div>
     </div>
   )
