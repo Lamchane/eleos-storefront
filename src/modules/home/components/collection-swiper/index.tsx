@@ -46,6 +46,18 @@ function CollectionSwiper({ collections }: Props) {
       }}
       modules={[Pagination, Autoplay]}
     >
+      <SwiperSlide>
+        <LocalizedClientLink href={`/store`}>
+          <Image
+            src={
+              "https://eleos-medusa-uploads.s3.ap-south-1.amazonaws.com/Hero_Images/christmas.webp"
+            }
+            alt={`christmas sale`}
+            width={1920}
+            height={1080}
+          />
+        </LocalizedClientLink>
+      </SwiperSlide>
       {collections.map((collection) => (
         <SwiperSlide key={collection.title}>
           <CollectionBanner collection={collection} />

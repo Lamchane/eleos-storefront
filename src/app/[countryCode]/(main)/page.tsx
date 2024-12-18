@@ -146,7 +146,18 @@ export default async function Home({
       </section>
 
       <div>
-        <CollectionBanner collection={heroCollections[2]} />
+        {/* <CollectionBanner collection={heroCollections[2]} /> */}
+
+        <LocalizedClientLink href={`/store`}>
+          <Image
+            src={
+              "https://eleos-medusa-uploads.s3.ap-south-1.amazonaws.com/Hero_Images/fleshsales.png"
+            }
+            alt={"sale is live"}
+            width={1920}
+            height={1080}
+          />
+        </LocalizedClientLink>
       </div>
 
       <section>
