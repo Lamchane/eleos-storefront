@@ -5,6 +5,7 @@ import { getCategoriesList, getCollectionsList } from "@lib/data"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import MedusaCTA from "@modules/layout/components/medusa-cta"
 import Image from "next/image"
+import Link from "next/link"
 
 export default async function Footer() {
   const { collections } = await getCollectionsList(0, 6)
@@ -203,7 +204,15 @@ export default async function Footer() {
               <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
                 <li>Timings: 10 AM - 7 PM (Mon - Sat)</li>
                 {/* <li>Whatsapp : +91 1234567890</li> */}
-                <li>Instagram: @eleos</li>
+                <li>
+                  Instagram:{" "}
+                  <Link
+                    target="_blank"
+                    href="https://www.instagram.com/eleos.in_"
+                  >
+                    @eleos
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
