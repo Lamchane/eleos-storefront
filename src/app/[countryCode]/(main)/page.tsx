@@ -14,6 +14,7 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import Image from "next/image"
 import { Suspense } from "react"
 import BottomNav from "@modules/layout/components/bottom-menu"
+import VimeoEmbed from "@modules/common/components/vimeo-embed"
 
 export const metadata: Metadata = {
   title: "Enhance Your Style With Premium Quality Accessories - ELEOS",
@@ -149,7 +150,8 @@ export default async function Home({
         {/* <CollectionBanner collection={heroCollections[2]} /> */}
 
         {/* <LocalizedClientLink href={`/store`}> */}
-        <video
+        <VimeoEmbed videoId="1045938715" />
+        {/* <video
           src={
             "https://eleos-medusa-uploads.s3.ap-south-1.amazonaws.com/Hero_Images/eleos+stop+motion+compressed+mp4+(1).webm"
           }
@@ -159,7 +161,7 @@ export default async function Home({
           autoPlay
           muted
           loop
-        />
+        /> */}
         {/* </LocalizedClientLink> */}
       </div>
 
