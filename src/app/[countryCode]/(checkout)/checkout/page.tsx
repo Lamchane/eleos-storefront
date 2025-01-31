@@ -8,6 +8,8 @@ import Wrapper from "@modules/checkout/components/payment-wrapper"
 import CheckoutForm from "@modules/checkout/templates/checkout-form"
 import CheckoutSummary from "@modules/checkout/templates/checkout-summary"
 import { getCart } from "@lib/data"
+import { Suspense } from "react"
+import { PixelInitiateCheckout } from "@modules/pixel"
 
 export const metadata: Metadata = {
   title: "Checkout",
@@ -43,6 +45,17 @@ export default async function Checkout() {
         <CheckoutForm />
       </Wrapper>
       <CheckoutSummary />
+
+      <Suspense>
+        <PixelInitiateCheckout
+          productIds={cart.items.map((i) => i.variant_id ?? "")}
+          contents={cart.items.map((i) => ({
+            id: i.variant_id ?? "",
+            quantity: i.quantity,
+          }))}
+          num_items={cart.items.length}
+        />
+      </Suspense>
     </div>
   )
 }
