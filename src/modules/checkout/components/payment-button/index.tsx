@@ -10,6 +10,7 @@ import React, { useState } from "react"
 import ErrorMessage from "../error-message"
 import Spinner from "@modules/common/icons/spinner"
 import { RazorpayPaymentButton } from "./razorpay-payment-button"
+import { PixelPurchase } from "@modules/pixel"
 
 type PaymentButtonProps = {
   cart: Omit<Cart, "refundable_amount" | "refunded_total">
@@ -49,7 +50,11 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({
       )
     case "manual":
       return (
-        <ManualTestPaymentButton notReady={notReady} data-testid={dataTestId} />
+        <ManualTestPaymentButton
+          cart={cart}
+          notReady={notReady}
+          data-testid={dataTestId}
+        />
       )
     case "paypal":
       return (
@@ -258,7 +263,13 @@ const PayPalPaymentButton = ({
   }
 }
 
-const ManualTestPaymentButton = ({ notReady }: { notReady: boolean }) => {
+const ManualTestPaymentButton = ({
+  cart,
+  notReady,
+}: {
+  cart: Omit<Cart, "refundable_amount" | "refunded_total">
+  notReady: boolean
+}) => {
   const [submitting, setSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
@@ -266,6 +277,11 @@ const ManualTestPaymentButton = ({ notReady }: { notReady: boolean }) => {
     await placeOrder().catch((err) => {
       setErrorMessage(err.toString())
       setSubmitting(false)
+    })
+
+    PixelPurchase({
+      currency: cart.region.currency.code,
+      value: cart.total ?? 0,
     })
   }
 
