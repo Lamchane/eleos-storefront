@@ -30,11 +30,12 @@ export const PixelInitiateCheckout = ({
   num_items: number
 }) => {
   useEffect(() => {
-    ReactPixel.track("INITIATE_CHECKOUT", {
-      content_ids: productIds,
-      contents: contents,
-      num_items: num_items,
-    })
+    if (typeof window !== "undefined")
+      ReactPixel.track("INITIATE_CHECKOUT", {
+        content_ids: productIds,
+        contents: contents,
+        num_items: num_items,
+      })
   }, [])
 
   return null
@@ -55,7 +56,7 @@ export const PixelPurchase = ({
 
 const PixelPageView = () => {
   useEffect(() => {
-    if (typeof window !== undefined) {
+    if (typeof window !== "undefined") {
       ReactPixel.init(PIXEL_ID)
       ReactPixel.pageView()
     }
