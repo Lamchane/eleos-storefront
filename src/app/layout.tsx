@@ -15,9 +15,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
       <body>
         <main className="relative">{props.children}</main>
 
-        <Suspense>
-          <PixelPageView />
-        </Suspense>
+        <PixelPageView />
       </body>
     </html>
   )

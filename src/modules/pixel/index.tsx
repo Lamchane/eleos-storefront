@@ -55,8 +55,10 @@ export const PixelPurchase = ({
 
 const PixelPageView = () => {
   useEffect(() => {
-    ReactPixel.init(PIXEL_ID)
-    ReactPixel.pageView()
+    if (typeof window !== undefined) {
+      ReactPixel.init(PIXEL_ID)
+      ReactPixel.pageView()
+    }
   }, [])
   return null
 }
