@@ -32,7 +32,7 @@ function CategoryWithProductRail({ categoryWithProducts, region }: Props) {
   return (
     <div className="w-full">
       {categoryWithProducts.length > 0 && (
-        // @ts-expect-error
+        // @ts-ignore
         <Tabs defaultValue={categoryWithProducts[0].id}>
           <Tabs.List className="flex justify-center">
             {categoryWithProducts.map((category) => (
