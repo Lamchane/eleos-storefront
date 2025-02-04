@@ -3,7 +3,7 @@
 import { useEffect } from "react"
 import ReactPixel from "react-facebook-pixel"
 
-const PIXEL_ID = process.env.NEXT_PUBLIC_PIXEL_ID ?? "553292634405508"
+const PIXEL_ID = process.env.NEXT_PUBLIC_PIXEL_ID ?? "1831060441045088"
 
 export const PixelAddToCart = ({ productId }: { productId: string }) => {
   ReactPixel.track("ADD_TO_CART", {
