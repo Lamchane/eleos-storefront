@@ -3,10 +3,10 @@
 import { useEffect } from "react"
 import ReactPixel from "react-facebook-pixel"
 
-const PIXEL_ID = process.env.NEXT_PUBLIC_PIXEL_ID ?? "1831060441045088"
+const PIXEL_ID = process.env.NEXT_PUBLIC_PIXEL_ID ?? "1341146353567682"
 
 export const PixelAddToCart = ({ productId }: { productId: string }) => {
-  ReactPixel.track("ADD_TO_CART", {
+  ReactPixel.track("AddToCart", {
     content_ids: [productId],
     contents: [{ id: productId, quantity: 1 }],
     content_type: "product",
@@ -14,7 +14,7 @@ export const PixelAddToCart = ({ productId }: { productId: string }) => {
 }
 
 export const PixelAddToWishList = ({ productId }: { productId: string }) => {
-  ReactPixel.track("ADD_TO_WISHLIST", {
+  ReactPixel.track("AddToWishlist", {
     content_ids: [productId],
     contents: [{ id: productId, quantity: 1 }],
   })
@@ -31,7 +31,7 @@ export const PixelInitiateCheckout = ({
 }) => {
   useEffect(() => {
     if (typeof window !== "undefined")
-      ReactPixel.track("INITIATE_CHECKOUT", {
+      ReactPixel.track("InitiateCheckout", {
         content_ids: productIds,
         contents: contents,
         num_items: num_items,
@@ -48,10 +48,19 @@ export const PixelPurchase = ({
   currency: string
   value: number
 }) => {
-  ReactPixel.track("INITIATE_CHECKOUT", {
+  ReactPixel.track("Purchase", {
     currency,
     value,
   })
+}
+
+export const PixelViewContent = ({ productId }: { productId: string }) => {
+  ReactPixel.track("ViewContent", {
+    content_ids: [productId],
+    content_type: "product",
+  })
+
+  return null
 }
 
 const PixelPageView = () => {
