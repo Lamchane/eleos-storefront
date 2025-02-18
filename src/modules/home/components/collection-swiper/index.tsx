@@ -50,7 +50,7 @@ function CollectionSwiper({ collections }: Props) {
         <LocalizedClientLink href={`/store`}>
           <Image
             src={
-              "https://eleos-medusa-uploads.s3.ap-south-1.amazonaws.com/Hero_Images/222.webp"
+              "https://eleos-medusa-uploads.s3.ap-south-1.amazonaws.com/Hero_Images/eleos+homepage+banner+webp.webp"
             }
             alt={`celebrating love`}
             width={1920}
