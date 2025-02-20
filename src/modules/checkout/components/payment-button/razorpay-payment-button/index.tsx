@@ -4,6 +4,7 @@ import Spinner from "@modules/common/icons/spinner"
 import React, { useCallback, useState } from "react"
 import useRazorpay, { RazorpayOptions } from "react-razorpay"
 import { placeOrder } from "@modules/checkout/actions"
+import { PixelPurchase } from "@modules/pixel"
 
 export const RazorpayPaymentButton = ({
   session,
@@ -27,6 +28,11 @@ export const RazorpayPaymentButton = ({
     await placeOrder().catch(() => {
       setErrorMessage("An error occurred, please try again.")
       setSubmitting(false)
+    })
+
+    PixelPurchase({
+      currency: cart.region.currency.code,
+      value: cart.total ?? 0,
     })
   }
 

@@ -54,10 +54,10 @@ const Item: React.FC<AccordionItemProps> = ({
         className
       )}
     >
-      {/* @ts-expect-error */}
+      {/* @ts-ignore */}
       <AccordionPrimitive.Header className="px-1">
         <div className="flex flex-col">
-          {/* @ts-expect-error */}
+          {/* @ts-ignore */}
           <AccordionPrimitive.Trigger>
             <div className="flex w-full items-center justify-between">
               <div className="flex items-center gap-4">
@@ -73,7 +73,7 @@ const Item: React.FC<AccordionItemProps> = ({
           )}
         </div>
       </AccordionPrimitive.Header>
-      {/* @ts-expect-error */}
+      {/* @ts-ignore */}
       <AccordionPrimitive.Content
         forceMount={forceMountContent}
         className={clx(

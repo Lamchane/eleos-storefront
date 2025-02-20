@@ -29,7 +29,7 @@ function CollectionWithProductRail({ collectionWithProducts, region }: Props) {
   return (
     <div className="w-full">
       {collectionWithProducts.length > 0 && (
-        // @ts-expect-error
+        // @ts-ignore
         <Tabs defaultValue={collectionWithProducts[0].id}>
           <Tabs.List className="flex justify-center">
             {collectionWithProducts.map((collection) => (

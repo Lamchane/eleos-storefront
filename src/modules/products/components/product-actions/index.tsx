@@ -17,6 +17,7 @@ import ProductPrice from "../product-price"
 import { BsHeart } from "react-icons/bs"
 import { addToWishlist } from "@modules/account/actions"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { PixelAddToCart, PixelAddToWishList } from "@modules/pixel"
 
 type ProductActionsProps = {
   product: PricedProduct
@@ -138,6 +139,10 @@ export default function ProductActions({
       countryCode,
     })
 
+    PixelAddToCart({
+      productId: variant.id,
+    })
+
     setIsAdding(false)
     setIsAdded(true)
   }
@@ -151,6 +156,10 @@ export default function ProductActions({
       variant_id: variant.id,
       quantity: 1,
       countryCode,
+    })
+
+    PixelAddToWishList({
+      productId: variant.id,
     })
 
     setWishlisting(false)
