@@ -13,6 +13,7 @@ const transformProductPreview = (
   const variants = product.variants as unknown as CalculatedVariant[]
 
   let cheapestVariant = undefined
+  let inStock = true
 
   if (variants?.length > 0) {
     cheapestVariant = variants.reduce((acc, curr) => {
@@ -23,12 +24,33 @@ const transformProductPreview = (
     }, variants[0])
   }
 
+  inStock = variants?.every((variant) => {
+    if (!variant) return false // Ensure variant exists
+
+    // If inventory isn't managed, it's always available
+    if (!variant.manage_inventory) return true
+
+    // If backorders are allowed, it's available
+    if (variant.allow_backorder) return true
+
+    // If inventory exists and is greater than 0, it's available
+    if (
+      typeof variant.inventory_quantity === "number" &&
+      variant.inventory_quantity > 0
+    )
+      return true
+
+    // Otherwise, it's out of stock
+    return false
+  })
+
   return {
     id: product.id!,
     title: product.title!,
     handle: product.handle!,
     thumbnail: product.thumbnail!,
     created_at: product.created_at,
+    inStock: inStock,
     price: cheapestVariant
       ? {
           calculated_price: formatAmount({
