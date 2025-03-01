@@ -57,7 +57,7 @@ export default function Contacts({}: Props) {
               </div>
               <div className="text-sm md:text-base">
                 Phone number &ndash;&nbsp;{" "}
-                <a href="tel:+916000205304">+91 6000205304</a>
+                <a href="tel:+916026804180">+91 6026804180</a>
               </div>
             </div>
 
@@ -68,7 +68,7 @@ export default function Contacts({}: Props) {
               <div className="text-sm md:text-base">
                 Address &ndash;&nbsp;
                 <Link href={"contact@eleos.in"} target="_new">
-                  Mukhya path, near Kalimandir, Assam, Guwahati, 781005
+                  6th floor, Central mall, Christian Basti, Guwahati - 781005
                 </Link>
               </div>
             </div>
@@ -77,7 +77,7 @@ export default function Contacts({}: Props) {
 
         <div className="p-4">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.058813918079!2d91.77455417556939!3d26.162213977102425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a590dc07c938f%3A0x562d1a267e7ab66e!2sMukhya%20Path%2C%20Tarun%20Nagar%2C%20Guwahati%2C%20Assam%20781006!5e0!3m2!1sen!2sin!4v1733321094785!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.207647405168!2d91.7753679106285!3d26.15736607700995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a5986cd7aa9ab%3A0x1a7946c3ae41ad3d!2sCentral%20Mall!5e0!3m2!1sen!2sin!4v1740640062645!5m2!1sen!2sin"
             style={{ border: 0 }}
             allowFullScreen={false}
             loading="lazy"
