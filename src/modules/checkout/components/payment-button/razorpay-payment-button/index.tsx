@@ -25,14 +25,14 @@ export const RazorpayPaymentButton = ({
   const orderData = session.data as Record<string, string>
 
   const onPaymentCompleted = async () => {
-    await placeOrder().catch(() => {
-      setErrorMessage("An error occurred, please try again.")
-      setSubmitting(false)
-    })
-
     PixelPurchase({
       currency: cart.region.currency.code,
       value: cart.total ?? 0,
+    })
+
+    await placeOrder().catch(() => {
+      setErrorMessage("An error occurred, please try again.")
+      setSubmitting(false)
     })
   }
 
