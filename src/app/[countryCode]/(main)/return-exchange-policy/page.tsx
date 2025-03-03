@@ -77,17 +77,15 @@ export default function Return({}: Props) {
           piece lives up to our high standards.
         </p>
 
-        <h2 className="font-semibold text-xl">
-          Warranty Processing Fee Structure
-        </h2>
-        <p className="text-gray-800/60">
+        <h2 className="font-semibold text-xl">Credit Terms</h2>
+        {/* <p className="text-gray-800/60">
           To facilitate the warranty process, we charge a nominal fee for
           handling and shipping replacements:
-        </p>
+        </p> */}
         <ul className="list-disc list-inside text-800/60">
-          <li>For items under ₹2,000: ₹700</li>
-          <li>For items under ₹5,000: ₹1,500</li>
-          <li>For items under ₹10,000: ₹2,000</li>
+          <li>0&ndash;3 months: 35% of invoice value</li>
+          <li>3&ndash;6 months: 20% of invoice value</li>
+          <li>After 6&ndash;12 months: 15% of invoice value</li>
         </ul>
         <h2 className="font-semibold text-xl">Single Replacement Policy</h2>
         <p className="text-gray-800/60">
