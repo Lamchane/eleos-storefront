@@ -6,6 +6,9 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://localhost:8000"
 
 // Dynamically import PixelPageView with SSR disabled
 const PixelPageView = dynamic(() => import("@modules/pixel"), { ssr: false })
+const ClarityInitializer = dynamic(() => import("@modules/clarity"), {
+  ssr: false,
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -19,6 +22,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
 
         {/* PixelPageView dynamically imported to avoid SSR issues */}
         <PixelPageView />
+        <ClarityInitializer />
       </body>
     </html>
   )

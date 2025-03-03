@@ -274,14 +274,14 @@ const ManualTestPaymentButton = ({
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const onPaymentCompleted = async () => {
-    await placeOrder().catch((err) => {
-      setErrorMessage(err.toString())
-      setSubmitting(false)
-    })
-
     PixelPurchase({
       currency: cart.region.currency.code,
       value: cart.total ?? 0,
+    })
+
+    await placeOrder().catch((err) => {
+      setErrorMessage(err.toString())
+      setSubmitting(false)
     })
   }
 
