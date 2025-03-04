@@ -9,6 +9,7 @@ import Refresh from "@modules/common/icons/refresh"
 import Accordion from "./accordion"
 import { Text } from "@medusajs/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import Image from "next/image"
 
 type ProductTabsProps = {
   product: PricedProduct
@@ -36,6 +37,14 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
 
   return (
     <div className="w-full">
+      <Image
+        src={"/assets/images/quality.png"}
+        alt="quality assurance"
+        width={1030}
+        height={360}
+        className="w-full p-2"
+      />
+
       <Accordion type="multiple">
         {tabs.map((tab, i) => (
           <Accordion.Item
