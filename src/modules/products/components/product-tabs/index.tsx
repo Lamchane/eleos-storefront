@@ -38,7 +38,7 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
   return (
     <div className="w-full">
       <Image
-        src={"/assets/images/quality.png"}
+        src={"/assets/images/quality-assurance.png"}
         alt="quality assurance"
         width={1030}
         height={360}
