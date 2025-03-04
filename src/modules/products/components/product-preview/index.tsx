@@ -40,7 +40,12 @@ export default function ProductPreview({
       href={`/products/${productPreview.handle}`}
       className="group"
     >
-      <div data-testid="product-wrapper" className="">
+      <div data-testid="product-wrapper" className="relative">
+        {productPreview.inStock === false && (
+          <div className="absolute top-1 right-1 bg-black text-white z-20 p-1 text-sm">
+            SOLD OUT
+          </div>
+        )}
         <Thumbnail
           thumbnail={productPreview.thumbnail}
           size="full"
