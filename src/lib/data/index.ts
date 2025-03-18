@@ -18,7 +18,11 @@ import { cache } from "react"
 import sortProducts from "@lib/util/sort-products"
 import transformProductPreview from "@lib/util/transform-product-preview"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
-import { ProductCategoryWithChildren, ProductPreviewType } from "types/global"
+import {
+  ProductCategoryWithChildren,
+  ProductPreviewType,
+  ProductReview,
+} from "types/global"
 
 import { medusaClient } from "@lib/config"
 import medusaError from "@lib/util/medusa-error"
@@ -573,6 +577,29 @@ export const getProductsListWithSort = cache(
     }
   }
 )
+
+export const getProductReviews = cache(async function (
+  product_id: string
+): Promise<{ reviews: ProductReview[] }> {
+  const data: { reviews: ProductReview[] } = await medusaClient.client.request(
+    "GET",
+    `/store/products/${product_id}/reviews`
+  )
+  return {
+    reviews: data.reviews,
+  }
+})
+
+export const addProductReview = (
+  product_id: string,
+  data: { title: string; user_name: string; rating: number; content: string }
+) => {
+  return medusaClient.client.request(
+    "POST",
+    `/store/products/${product_id}/reviews`,
+    data
+  )
+}
 
 export const getHomepageProducts = cache(async function getHomepageProducts({
   collectionHandles,

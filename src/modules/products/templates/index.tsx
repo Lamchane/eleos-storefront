@@ -12,6 +12,7 @@ import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-relat
 import { notFound } from "next/navigation"
 import ProductActionsWrapper from "./product-actions-wrapper"
 import ControlledImageGallery from "../components/controlled-image-gallery"
+import ProductReviews from "../components/reviews"
 
 type ProductTemplateProps = {
   product: PricedProduct
@@ -60,6 +61,8 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
           </Suspense>
 
           <ProductTabs product={product} />
+
+          <ProductReviews product={product} countryCode={countryCode} />
         </div>
       </div>
       <div
