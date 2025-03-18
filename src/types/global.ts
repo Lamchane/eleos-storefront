@@ -26,6 +26,16 @@ export type ProductPreviewType = {
   isFeatured?: boolean
 }
 
+export type ProductReview = {
+  id: string
+  product_id: string
+  title: string
+  user_name: string
+  rating: string
+  content: string
+  created_at?: Date
+}
+
 export type ProductCollectionWithPreviews = Omit<
   ProductCollection,
   "products"
