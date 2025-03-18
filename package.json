@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.6.1",
+    "@heroicons/react": "^2.2.0",
     "@hookform/error-message": "^2.0.0",
     "@medusajs/link-modules": "^0.2.3",
     "@medusajs/medusa-js": "^6.1.7",
@@ -44,13 +45,15 @@
     "react-country-flag": "^3.0.2",
     "react-dom": "^18.2.0",
     "react-facebook-pixel": "^1.0.4",
+    "react-hyper-modal": "^1.2.16",
     "react-icons": "^5.2.1",
     "react-instantsearch-hooks-web": "^6.29.0",
     "react-intersection-observer": "^9.3.4",
     "react-razorpay": "^2.0.1",
     "swiper": "^11.1.7",
     "tailwindcss-radix": "^2.8.0",
-    "webpack": "^5"
+    "webpack": "^5",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
