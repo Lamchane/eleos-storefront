@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 import "styles/globals.css"
 import dynamic from "next/dynamic"
+import Script from "next/script"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://localhost:8000"
 
