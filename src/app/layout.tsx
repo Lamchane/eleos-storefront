@@ -18,11 +18,10 @@ export const metadata: Metadata = {
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" data-mode="light">
-      <body>
-        <main className="relative">{props.children}</main>
-
+      <head>
         <Script
-          id={"omnisend"}
+          id={"omnisend-init"}
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
         window.omnisend = window.omnisend || [];
@@ -36,6 +35,9 @@ export default function RootLayout(props: { children: React.ReactNode }) {
         `,
           }}
         />
+      </head>
+      <body>
+        <main className="relative">{props.children}</main>
 
         {/* PixelPageView dynamically imported to avoid SSR issues */}
         <PixelPageView />
