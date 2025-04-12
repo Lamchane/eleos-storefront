@@ -22,6 +22,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
         <main className="relative">{props.children}</main>
 
         <Script
+          id={"omnisend"}
           dangerouslySetInnerHTML={{
             __html: `
         window.omnisend = window.omnisend || [];
