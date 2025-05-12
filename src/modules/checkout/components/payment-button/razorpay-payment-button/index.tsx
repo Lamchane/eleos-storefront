@@ -26,7 +26,7 @@ export const RazorpayPaymentButton = ({
 
   const onPaymentCompleted = async () => {
     PixelPurchase({
-      currency: cart.region.currency.code,
+      currency: cart.region?.currency?.code ?? "INR",
       value: cart.total ?? 0,
     })
 
