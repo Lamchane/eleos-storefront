@@ -183,37 +183,37 @@ export async function setPaymentMethod(providerId: string) {
 
     console.log("providerID:", providerId)
 
-    const availableShippingMethods = await listCartShippingMethods(cartId).then(
-      (methods) => methods
-    )
+    // const availableShippingMethods = await listCartShippingMethods(cartId).then(
+    //   (methods) => methods
+    // )
 
-    if (
-      !availableShippingMethods ||
-      availableShippingMethods.length < 1 ||
-      availableShippingMethods[0].id === undefined
-    ) {
-      revalidateTag("cart")
-      return cart
-    }
+    // if (
+    //   !availableShippingMethods ||
+    //   availableShippingMethods.length < 1 ||
+    //   availableShippingMethods[0].id === undefined
+    // ) {
+    //   revalidateTag("cart")
+    //   return cart
+    // }
 
-    let applicableMethods: PricedShippingOption[] = []
+    // let applicableMethods: PricedShippingOption[] = []
 
-    if (providerId === "manual") {
-      applicableMethods = availableShippingMethods.filter(
-        (m) => !m.is_return && m.metadata?.cod === "true"
-      )
-    } else {
-      applicableMethods = availableShippingMethods.filter(
-        (m) => !m.is_return && m.metadata?.cod !== "true"
-      )
-    }
+    // if (providerId === "manual") {
+    //   applicableMethods = availableShippingMethods.filter(
+    //     (m) => !m.is_return && m.metadata?.cod === "true"
+    //   )
+    // } else {
+    //   applicableMethods = availableShippingMethods.filter(
+    //     (m) => !m.is_return && m.metadata?.cod !== "true"
+    //   )
+    // }
 
-    console.log("shipping: ", applicableMethods)
+    // console.log("shipping: ", applicableMethods)
 
-    cart = await addShippingMethod({
-      cartId,
-      shippingMethodId: applicableMethods[0].id as string,
-    })
+    // cart = await addShippingMethod({
+    //   cartId,
+    //   shippingMethodId: applicableMethods[0].id as string,
+    // })
 
     revalidateTag("cart")
     return cart
