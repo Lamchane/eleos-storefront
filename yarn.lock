@@ -6547,6 +6547,11 @@ react-is@^16.13.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-razorpay-magic@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/react-razorpay-magic/-/react-razorpay-magic-1.0.1.tgz"
+  integrity sha512-tnJkizwY8JMJkR9cQD7lj3Q0DPlfFuC5T7u240aYmFpPzgktOxFgDts3K/sy3Kv29tEy5T3UhC135pjGa3ExeQ==
+
 react-razorpay@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/react-razorpay/-/react-razorpay-2.0.1.tgz"

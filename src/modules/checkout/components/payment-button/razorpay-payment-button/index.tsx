@@ -2,7 +2,7 @@ import { Button } from "@medusajs/ui"
 import { Cart, PaymentSession } from "@medusajs/medusa"
 import Spinner from "@modules/common/icons/spinner"
 import React, { useCallback, useState } from "react"
-import useRazorpay, { RazorpayOptions } from "react-razorpay"
+import useRazorpay, { RazorpayOptions } from "react-razorpay-magic"
 import { placeOrder } from "@modules/checkout/actions"
 import { PixelPurchase } from "@modules/pixel"
 
@@ -20,7 +20,7 @@ export const RazorpayPaymentButton = ({
   const [errorMessage, setErrorMessage] = useState<string | undefined>(
     undefined
   )
-  const [Razorpay] = useRazorpay()
+  const [Razorpay] = useRazorpay(true)
 
   const orderData = session.data as Record<string, string>
 
@@ -38,6 +38,7 @@ export const RazorpayPaymentButton = ({
 
   const handlePayment = useCallback(() => {
     const options: RazorpayOptions = {
+      one_click_checkout: false,
       callback_url: `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/razorpay/hooks`,
       key: process.env.NEXT_PUBLIC_RAZORPAY_KEY ?? "",
       amount: session.amount.toString(),
@@ -45,7 +46,6 @@ export const RazorpayPaymentButton = ({
       currency: cart.region.currency_code.toLocaleUpperCase(),
       name: process.env.NEXT_PUBLIC_SHOP_NAME ?? "your company name ",
       description: `Order number ${orderData.id}`,
-
       image: "https://example.com/your_logo",
       modal: {
         backdropclose: true,

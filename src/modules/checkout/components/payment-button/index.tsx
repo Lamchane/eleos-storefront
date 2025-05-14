@@ -72,6 +72,14 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({
           cart={cart}
         />
       )
+    case "razorpay-magic-checkout":
+      return (
+        <RazorpayPaymentButton
+          session={paymentSession}
+          notReady={notReady}
+          cart={cart}
+        />
+      )
     default:
       return <Button disabled>Select a payment method</Button>
   }
