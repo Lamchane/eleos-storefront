@@ -21,14 +21,14 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({
   cart,
   "data-testid": dataTestId,
 }) => {
-  const notReady =
-    !cart ||
-    !cart.shipping_address ||
-    !cart.billing_address ||
-    !cart.email ||
-    cart.shipping_methods.length < 1
-      ? true
-      : false
+  const notReady = false
+  // !cart ||
+  // !cart.shipping_address ||
+  // !cart.billing_address ||
+  // !cart.email ||
+  // cart.shipping_methods.length < 1
+  //   ? true
+  //   : false
 
   const paidByGiftcard =
     cart?.gift_cards && cart?.gift_cards?.length > 0 && cart?.total === 0
