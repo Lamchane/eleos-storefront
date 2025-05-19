@@ -30,7 +30,7 @@ export const RazorpayPaymentButton = ({
       value: cart.total ?? 0,
     })
 
-    await placeOrder().catch(() => {
+    await placeOrder("").catch(() => {
       setErrorMessage("An error occurred, please try again.")
       setSubmitting(false)
     })

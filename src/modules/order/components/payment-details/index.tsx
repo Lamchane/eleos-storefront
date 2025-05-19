@@ -27,16 +27,16 @@ const PaymentDetails = ({ order }: PaymentDetailsProps) => {
                 className="txt-medium text-ui-fg-subtle"
                 data-testid="payment-method"
               >
-                {paymentInfoMap[payment.provider_id].title}
+                {payment.data["status"] === "placed" ? "COD" : "Prepaid"}
               </Text>
             </div>
-            <div className="flex flex-col w-2/3">
+            {/* <div className="flex flex-col w-2/3">
               <Text className="txt-medium-plus text-ui-fg-base mb-1">
                 Payment details
               </Text>
               <div className="flex gap-2 txt-medium text-ui-fg-subtle items-center">
                 <Container className="flex items-center h-7 w-fit p-2 bg-ui-button-neutral-hover">
-                  {paymentInfoMap[payment.provider_id].icon}
+                  {paymentInfoMap[payment.provider_id]?.icon ?? null}
                 </Container>
                 <Text data-testid="payment-amount">
                   {payment.provider_id === "razorpay" &&
@@ -54,7 +54,7 @@ const PaymentDetails = ({ order }: PaymentDetailsProps) => {
                     })} To Be Paid`}
                 </Text>
               </div>
-            </div>
+            </div> */}
           </div>
         )}
       </div>

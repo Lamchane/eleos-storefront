@@ -30,13 +30,13 @@ export default async function CheckoutForm() {
   cart.checkout_step = cart && getCheckoutStep(cart)
 
   // get available shipping methods
-  // const availableShippingMethods = await listCartShippingMethods(cart.id).then(
-  //   (methods) => methods?.filter((m) => !m.is_return)
-  // )
+  const availableShippingMethods = await listCartShippingMethods(cart.id).then(
+    (methods) => methods?.filter((m) => !m.is_return)
+  )
 
-  // if (!availableShippingMethods) {
-  //   return null
-  // }
+  if (!availableShippingMethods) {
+    return null
+  }
 
   // get customer if logged in
   const customer = await getCustomer()
@@ -48,12 +48,12 @@ export default async function CheckoutForm() {
           <Addresses cart={cart} customer={customer} />
         </div>
 
-        {/* <div>
+        <div>
           <Shipping
             cart={cart}
             availableShippingMethods={availableShippingMethods}
           />
-        </div> */}
+        </div>
 
         <div>
           <Payment cart={cart} />

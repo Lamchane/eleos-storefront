@@ -7,6 +7,7 @@ import {
   completeCart,
   createPaymentSessions,
   deleteDiscount,
+  getRazorpayOrder,
   listCartShippingMethods,
   setPaymentSession,
   updateCart,
@@ -14,7 +15,6 @@ import {
 import { GiftCard, StorePostCartsCartReq } from "@medusajs/medusa"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
-import { PricedShippingOption } from "@medusajs/medusa/dist/types/pricing"
 
 export async function cartUpdate(data: StorePostCartsCartReq) {
   const cartId = cookies().get("_medusa_cart_id")?.value
@@ -237,7 +237,7 @@ export async function setPaymentMethod(providerId: string) {
   }
 }
 
-export async function placeOrder() {
+export async function placeOrder(orderId: string) {
   const cartId = cookies().get("_medusa_cart_id")?.value
 
   if (!cartId) throw new Error("No cartId cookie found")
@@ -245,17 +245,130 @@ export async function placeOrder() {
   let cart
 
   try {
+    const rzp_order = await getRazorpayOrder(orderId)
+
+    console.log(rzp_order)
+
+    const [shipping_first_name, shipping_last_name] =
+      rzp_order.customer_details?.shipping_address.name?.split(" ") ?? []
+
+    const addresses = new FormData()
+
+    addresses.set("shipping_address.first_name", shipping_first_name)
+    addresses.set("shipping_address.last_name", shipping_last_name)
+    addresses.set(
+      "shipping_address.address_1",
+      rzp_order.customer_details?.shipping_address.line1 ?? ""
+    )
+    addresses.set("shipping_address.company", "")
+    addresses.set(
+      "shipping_address.postal_code",
+      rzp_order.customer_details?.shipping_address.zipcode?.toString() ?? ""
+    )
+    addresses.set(
+      "shipping_address.city",
+      rzp_order.customer_details?.shipping_address.city ?? ""
+    )
+    addresses.set(
+      "shipping_address.country_code",
+      rzp_order.customer_details?.shipping_address.country ?? ""
+    )
+    addresses.set("shipping_address.province", "")
+    addresses.set(
+      "shipping_address.phone",
+      rzp_order.customer_details?.contact ?? ""
+    )
+
+    const [billing_first_name, billing_last_name] =
+      rzp_order.customer_details?.shipping_address.name?.split(" ") ?? []
+
+    addresses.set("email", rzp_order.customer_details?.email ?? "")
+    addresses.set("billing_address.first_name", billing_first_name)
+    addresses.set("billing_address.last_name", billing_last_name)
+    addresses.set(
+      "billing_address.address_1",
+      rzp_order.customer_details?.billing_address.line1 ?? ""
+    )
+    addresses.set("billing_address.company", "")
+    addresses.set(
+      "billing_address.postal_code",
+      rzp_order.customer_details?.billing_address.zipcode?.toString() ?? ""
+    )
+    addresses.set(
+      "billing_address.city",
+      rzp_order.customer_details?.billing_address.city ?? ""
+    )
+    addresses.set(
+      "billing_address.country_code",
+      rzp_order.customer_details?.billing_address.country ?? ""
+    )
+    addresses.set("billing_address.province", "")
+    addresses.set(
+      "billing_address.phone",
+      rzp_order.customer_details?.contact ?? ""
+    )
+
+    const data = {
+      email: addresses.get("email"),
+      shipping_address: {
+        first_name: addresses.get("shipping_address.first_name"),
+        last_name: addresses.get("shipping_address.last_name"),
+        address_1: addresses.get("shipping_address.address_1"),
+        address_2: "",
+        company: addresses.get("shipping_address.company"),
+        postal_code: addresses.get("shipping_address.postal_code"),
+        city: addresses.get("shipping_address.city"),
+        country_code: addresses.get("shipping_address.country_code"),
+        province: addresses.get("shipping_address.province"),
+        phone: addresses.get("shipping_address.phone"),
+      },
+      billing_address: {
+        first_name: addresses.get("billing_address.first_name"),
+        last_name: addresses.get("billing_address.last_name"),
+        address_1: addresses.get("billing_address.address_1"),
+        address_2: "",
+        company: addresses.get("billing_address.company"),
+        postal_code: addresses.get("billing_address.postal_code"),
+        city: addresses.get("billing_address.city"),
+        country_code: addresses.get("billing_address.country_code"),
+        province: addresses.get("billing_address.province"),
+        phone: addresses.get("billing_address.phone"),
+      },
+      metadata: {
+        isCOD: (rzp_order.cod_fee ?? 0) > 0 ? true : false,
+        cod_fee: rzp_order.cod_fee ?? 0,
+      },
+    } as StorePostCartsCartReq
+    await updateCart(cartId, data)
+
+    const methods = await listCartShippingMethods(cartId)
+    if (!methods || methods.length === 0) {
+      throw new Error("No Shipping Method found")
+    }
+    await addShippingMethod({ cartId, shippingMethodId: methods[0].id ?? "" })
+
+    console.log("before complete")
+
     cart = await completeCart(cartId)
+
+    console.log("after complete")
+
     revalidateTag("cart")
   } catch (error: any) {
     throw error
   }
+
+  console.log(cart)
+
+  console.log("before redirecting")
 
   if (cart?.type === "order") {
     const countryCode = cart.data.shipping_address?.country_code?.toLowerCase()
     cookies().set("_medusa_cart_id", "", { maxAge: -1 })
     redirect(`/${countryCode}/order/confirmed/${cart?.data.id}`)
   }
+
+  console.log("after redirecting")
 
   return cart
 }

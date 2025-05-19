@@ -24,7 +24,7 @@ import {
   ProductReview,
 } from "types/global"
 
-import { medusaClient } from "@lib/config"
+import { medusaClient, razorpayClient } from "@lib/config"
 import medusaError from "@lib/util/medusa-error"
 import { cookies } from "next/headers"
 
@@ -836,4 +836,12 @@ export const getProductsByCategoryHandle = cache(async function ({
     response,
     nextPage,
   }
+})
+
+// razorpay order
+
+export const getRazorpayOrder = cache(async function (orderId: string) {
+  const order = await razorpayClient.orders.fetch(orderId)
+
+  return order
 })

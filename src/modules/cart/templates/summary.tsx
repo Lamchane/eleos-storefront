@@ -5,11 +5,7 @@ import { Button } from "@medusajs/ui"
 import CartTotals from "@modules/common/components/cart-totals"
 import { CartWithCheckoutStep } from "types/global"
 // import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import {
-  placeOrder,
-  setPaymentMethod,
-  paymentSessions,
-} from "@modules/checkout/actions"
+import { placeOrder, paymentSessions } from "@modules/checkout/actions"
 import useRazorpay, { RazorpayOptions } from "react-razorpay-magic"
 import { useCallback, useState } from "react"
 import { PixelPurchase } from "@modules/pixel"
@@ -25,14 +21,15 @@ const Summary = ({ cart }: SummaryProps) => {
 
   const [Razorpay] = useRazorpay(true)
 
-  const onPaymentCompleted = async () => {
+  const onPaymentCompleted = async (razorpay_order_id: string) => {
     PixelPurchase({
       currency: cart.region?.currency?.code ?? "INR",
       value: cart.total ?? 0,
     })
 
-    await placeOrder().catch(() => {
-      setErrorMessage("An error occurred, please try again.")
+    await placeOrder(razorpay_order_id).catch((e) => {
+      console.log(e)
+      setErrorMessage(e.message ?? "An error occurred, please try again.")
       setSubmitting(false)
     })
   }
@@ -59,8 +56,9 @@ const Summary = ({ cart }: SummaryProps) => {
           },
           animation: true,
         },
-        handler: async (args) => {
-          onPaymentCompleted()
+        remember_customer: true,
+        handler: async ({ razorpay_order_id, razorpay_payment_id }) => {
+          onPaymentCompleted(razorpay_order_id)
         },
       }
 

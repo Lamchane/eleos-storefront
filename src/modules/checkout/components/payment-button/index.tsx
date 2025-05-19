@@ -90,7 +90,7 @@ const GiftCardPaymentButton = () => {
 
   const handleOrder = async () => {
     setSubmitting(true)
-    await placeOrder()
+    await placeOrder("")
   }
 
   return (
@@ -117,7 +117,7 @@ const StripePaymentButton = ({
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const onPaymentCompleted = async () => {
-    await placeOrder().catch(() => {
+    await placeOrder("").catch(() => {
       setErrorMessage("An error occurred, please try again.")
       setSubmitting(false)
     })
@@ -219,7 +219,7 @@ const PayPalPaymentButton = ({
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const onPaymentCompleted = async () => {
-    await placeOrder().catch(() => {
+    await placeOrder("").catch(() => {
       setErrorMessage("An error occurred, please try again.")
       setSubmitting(false)
     })
@@ -287,7 +287,7 @@ const ManualTestPaymentButton = ({
       value: cart.total ?? 0,
     })
 
-    await placeOrder().catch((err) => {
+    await placeOrder("").catch((err) => {
       setErrorMessage(err.toString())
       setSubmitting(false)
     })

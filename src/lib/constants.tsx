@@ -34,6 +34,10 @@ export const paymentInfoMap: Record<
     title: "COD   (₹99)",
     icon: <Cash />,
   },
+  "razorpay-magic-checkout": {
+    title: "RazorPay",
+    icon: <Cash />,
+  },
   // Add more payment providers here
 }
 
