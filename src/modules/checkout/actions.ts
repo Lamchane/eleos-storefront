@@ -334,10 +334,6 @@ export async function placeOrder(orderId: string) {
         province: addresses.get("billing_address.province"),
         phone: addresses.get("billing_address.phone"),
       },
-      metadata: {
-        isCOD: (rzp_order.cod_fee ?? 0) > 0 ? true : false,
-        cod_fee: rzp_order.cod_fee ?? 0,
-      },
     } as StorePostCartsCartReq
     await updateCart(cartId, data)
 
