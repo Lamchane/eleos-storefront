@@ -273,7 +273,10 @@ export async function placeOrder(orderId: string) {
       "shipping_address.country_code",
       rzp_order.customer_details?.shipping_address.country ?? ""
     )
-    addresses.set("shipping_address.province", "")
+    addresses.set(
+      "shipping_address.province",
+      rzp_order.customer_details?.shipping_address.state ?? ""
+    )
     addresses.set(
       "shipping_address.phone",
       rzp_order.customer_details?.contact ?? ""
@@ -302,7 +305,10 @@ export async function placeOrder(orderId: string) {
       "billing_address.country_code",
       rzp_order.customer_details?.billing_address.country ?? ""
     )
-    addresses.set("billing_address.province", "")
+    addresses.set(
+      "billing_address.province",
+      rzp_order.customer_details?.billing_address.state ?? ""
+    )
     addresses.set(
       "billing_address.phone",
       rzp_order.customer_details?.contact ?? ""
