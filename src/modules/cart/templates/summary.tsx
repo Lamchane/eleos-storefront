@@ -22,15 +22,15 @@ const Summary = ({ cart }: SummaryProps) => {
   const [Razorpay] = useRazorpay(true)
 
   const onPaymentCompleted = async (razorpay_order_id: string) => {
-    PixelPurchase({
-      currency: cart.region?.currency?.code ?? "INR",
-      value: cart.total ?? 0,
-    })
-
     await placeOrder(razorpay_order_id).catch((e) => {
       console.log(e)
       setErrorMessage(e.message ?? "An error occurred, please try again.")
       setSubmitting(false)
+    })
+
+    PixelPurchase({
+      currency: cart.region?.currency?.code ?? "INR",
+      value: cart.total ?? 0,
     })
   }
 
