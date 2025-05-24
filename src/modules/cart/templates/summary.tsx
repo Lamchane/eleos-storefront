@@ -38,7 +38,7 @@ const Summary = ({ cart }: SummaryProps) => {
     (order_id: string, amount: string) => {
       const options: RazorpayOptions = {
         one_click_checkout: false,
-        callback_url: `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/razorpay/hooks`,
+        // callback_url: `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/razorpay/hooks`,
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY ?? "",
         amount: amount,
         order_id: order_id,
