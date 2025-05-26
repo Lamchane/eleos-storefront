@@ -140,7 +140,8 @@ export async function POST(request: NextRequest) {
     const cart = await completeCart(cartId)
 
     if (cart?.type === "order") {
-      const countryCode = cart.data.region.countries[0].iso_2
+      const countryCode =
+        cart.data.shipping_address?.country_code?.toLowerCase()
       cookies().set("_medusa_cart_id", "", { maxAge: -1 })
       return redirect(`/${countryCode}/order/confirmed/${cart.data.id}`)
     }
