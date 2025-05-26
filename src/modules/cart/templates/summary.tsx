@@ -39,6 +39,7 @@ const Summary = ({ cart }: SummaryProps) => {
       const options: RazorpayOptions = {
         one_click_checkout: false,
         callback_url: `${process.env.NEXT_PUBLIC_BASE_URL}/${cart.region.countries[0].iso_2}/order`,
+        redirect: true,
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY ?? "",
         amount: amount,
         order_id: order_id,
