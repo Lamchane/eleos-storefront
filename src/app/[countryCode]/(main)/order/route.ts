@@ -6,6 +6,7 @@ import {
   updateCart,
 } from "@lib/data"
 import { StorePostCartsCartReq } from "@medusajs/medusa"
+import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { NextRequest } from "next/server"
 
@@ -140,6 +141,7 @@ export async function POST(request: NextRequest) {
 
     if (cart?.type === "order") {
       const countryCode = cart.data.region.countries[0].iso_2
+      cookies().set("_medusa_cart_id", "", { maxAge: -1 })
       return redirect(`/${countryCode}/order/confirmed/${cart.data.id}`)
     }
   }
