@@ -228,6 +228,7 @@ export default function ProductActions({
         </Button>
 
         <MobileActions
+          isAdded={isAdded}
           product={product}
           variant={variant}
           region={region}

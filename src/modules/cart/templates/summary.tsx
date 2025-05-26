@@ -38,7 +38,7 @@ const Summary = ({ cart }: SummaryProps) => {
     (order_id: string, amount: string) => {
       const options: RazorpayOptions = {
         one_click_checkout: false,
-        // callback_url: `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/razorpay/hooks`,
+        callback_url: `${process.env.NEXT_PUBLIC_BASE_URL}/${cart.region.countries[0].iso_2}/order`,
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY ?? "",
         amount: amount,
         order_id: order_id,
@@ -57,9 +57,9 @@ const Summary = ({ cart }: SummaryProps) => {
           animation: true,
         },
         remember_customer: true,
-        handler: async ({ razorpay_order_id, razorpay_payment_id }) => {
-          onPaymentCompleted(razorpay_order_id)
-        },
+        // handler: async ({ razorpay_order_id, razorpay_payment_id }) => {
+        //   onPaymentCompleted(razorpay_order_id)
+        // },
       }
 
       const razorpay = new Razorpay(options)
