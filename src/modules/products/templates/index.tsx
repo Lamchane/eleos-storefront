@@ -14,6 +14,8 @@ import ProductActionsWrapper from "./product-actions-wrapper"
 import ControlledImageGallery from "../components/controlled-image-gallery"
 import ProductReviews from "../components/reviews"
 
+import BottomNav from "@modules/layout/components/bottom-menu"
+
 type ProductTemplateProps = {
   product: PricedProduct
   region: Region
@@ -73,6 +75,8 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
           <RelatedProducts product={product} countryCode={countryCode} />
         </Suspense>
       </div>
+
+      <BottomNav />
     </>
   )
 }
