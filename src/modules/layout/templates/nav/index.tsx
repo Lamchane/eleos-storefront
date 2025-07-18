@@ -24,7 +24,7 @@ export default async function Nav() {
       <div className="sticky top-0 w-full bg-black text-white text-center py-1.5 font-medium text-sm">
         UPTO 60% OFF SITEWIDE
       </div>
-      <header className="relative h-28 mx-auto border-b duration-200 bg-white border-ui-border-base">
+      <header className="relative py-2 h-min md:h-28 mx-auto border-b duration-200 bg-white border-ui-border-base">
         <nav className="content-container txt-xsmall-plus text-ui-fg-subtle flex items-center justify-between w-full h-full text-small-regular">
           <div className="flex-1 basis-0 h-full flex items-center">
             <div className="h-full">

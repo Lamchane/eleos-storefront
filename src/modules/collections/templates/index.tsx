@@ -22,9 +22,13 @@ export default function CollectionTemplate({
 
   return (
     <div className="flex flex-col small:flex-row small:items-start py-6 content-container">
+      <img
+        src="/assets/images/quality-assurance.png"
+        className="w-80 mx-auto md:hidden"
+      />
       <RefinementList sortBy={sortBy || "created_at"} />
       <div className="w-full">
-        <div className="mb-8 text-2xl-semi">
+        <div className="mb-4 md:mb-8 text-xl-semi md:text-2xl-semi">
           <h1>{collection.title}</h1>
         </div>
         <Suspense fallback={<SkeletonProductGrid />}>
