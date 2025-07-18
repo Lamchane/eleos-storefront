@@ -217,10 +217,16 @@ export default async function Footer() {
             </div>
           </div>
         </div>
-        <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
-          <Text className="txt-compact-small">
+        <div className="flex flex-col lg:flex-row justify-between items-center w-full mb-16 text-ui-fg-muted">
+          <p className="txt-compact-small">
             © {new Date().getFullYear()} ELEOS Store. All rights reserved.
-          </Text>
+          </p>
+          <p className="txt-compact-small">
+            Designed & Developed by{" "}
+            <a href="https://linktr.ee/GoVisible" target="_blank">
+              GoVisible
+            </a>
+          </p>
         </div>
       </div>
     </footer>

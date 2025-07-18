@@ -61,7 +61,7 @@ export default function Contacts({}: Props) {
               </div>
             </div>
 
-            <div className="flex space-x-2 md:text-center">
+            {/* <div className="flex space-x-2 md:text-center">
               <div className="flex items-center justify-center">
                 <BsHouseCheck size={15} />
               </div>
@@ -71,11 +71,11 @@ export default function Contacts({}: Props) {
                   6th floor, Central mall, Christian Basti, Guwahati - 781005
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
-        <div className="p-4">
+        {/* <div className="p-4">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.207647405168!2d91.7753679106285!3d26.15736607700995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a5986cd7aa9ab%3A0x1a7946c3ae41ad3d!2sCentral%20Mall!5e0!3m2!1sen!2sin!4v1740640062645!5m2!1sen!2sin"
             style={{ border: 0 }}
@@ -84,7 +84,7 @@ export default function Contacts({}: Props) {
             referrerPolicy="no-referrer-when-downgrade"
             className="w-full h-full"
           ></iframe>
-        </div>
+        </div> */}
 
         {/* form start here */}
         {/* <div className="p-2">
