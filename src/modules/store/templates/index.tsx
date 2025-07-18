@@ -23,10 +23,7 @@ const StoreTemplate = ({
       className="flex flex-col small:flex-row small:items-start py-6 content-container"
       data-testid="category-container"
     >
-      <img
-        src="/assets/images/quality-assurance.png"
-        className="w-80 mx-auto md:hidden"
-      />
+      <img src="/assets/images/perks.jpg" className="w-80 mx-auto md:hidden" />
       <RefinementList sortBy={sortBy || "created_at"} />
       <div className="w-full">
         <div className="mb-4 md:mb-8 text-xl-semi md:text-2xl-semi">
