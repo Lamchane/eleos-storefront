@@ -41,6 +41,9 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
       )}
       data-testid={dataTestid}
     >
+      <div className="absolute bottom-0 left-0 bg-black text-white z-20 p-1 text-xs">
+        FREE BOX + POUCH
+      </div>
       <ImageOrPlaceholder image={initialImage} size={size} />
     </div>
   )
